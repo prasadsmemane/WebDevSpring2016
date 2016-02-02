@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <!-- To support IE9/IE8, not required IE11/edge -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- To make the page mobile friendly -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Assignment1">
+    <meta name="author" content="Prasad Memane">
+    <!-- Downloaded from http://www.favicon-generator.org/ -->
+    <link rel="icon" href="../images/favicon.ico">
+
+    <title>Register</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+          crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+
+    <!-- Custom css to override some bootstrap features -->
+    <link href="../css/dashboard.css" rel="stylesheet"/>
+    <link href="../css/register.css" rel="stylesheet"/>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="home.html">Form Maker</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Register</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="#">Username</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a href="home.html"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+                <li><a href="profile.html"><span class="glyphicon glyphicon-user"></span>Profile</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-globe"></span>Admin</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-pencil"></span>Forms</a></li>
+            </ul>
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Register</h1>
+
+            <form class="form-horizontal" role="form" action="profile.html">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="email">Username:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control moo" id="username" placeholder="Enter username">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="pwd">Password:</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control moo" id="pwd" placeholder="Enter password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="verify-pwd">Verify Password:</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control moo" id="verify-pwd" placeholder="Verify password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="email">Email:</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control moo" id="email" placeholder="Enter email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <a href="profile.html" class="btn btn-primary btn-block btn-default">Register</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+</body>
+
+</html>
