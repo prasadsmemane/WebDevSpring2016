@@ -13,7 +13,7 @@
     <!-- Downloaded from http://www.favicon-generator.org/ -->
     <link rel="icon" href="../images/favicon.ico">
 
-    <title>Register</title>
+    <title>Forms</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -25,7 +25,7 @@
 
     <!-- Custom css to override some bootstrap features -->
     <link href="../css/dashboard.css" rel="stylesheet"/>
-    <link href="../css/register.css" rel="stylesheet"/>
+    <link href="../css/forms.css" rel="stylesheet"/>
 
 </head>
 
@@ -44,8 +44,6 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Register</a></li>
-                <li><a href="login.html">Login</a></li>
                 <li><a href="#">Username</a></li>
                 <li><a href="#">Logout</a></li>
             </ul>
@@ -60,44 +58,61 @@
                 <li><a href="home.html"><span class="glyphicon glyphicon-home"></span>Home</a></li>
                 <li><a href="profile.html"><span class="glyphicon glyphicon-user"></span>Profile</a></li>
                 <li><a href="admin.html"><span class="glyphicon glyphicon-globe"></span>Admin</a></li>
-                <li><a href="forms.html"><span class="glyphicon glyphicon-edit"></span>Forms</a></li>
+                <li class="active"><a href="#"><span class="glyphicon glyphicon-edit"></span>Forms <span class="sr-only">(current)</span></a></li>
             </ul>
         </div>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">Register</h1>
+            <h1 class="page-header">Forms</h1>
+            <br>
 
-            <form class="form-horizontal" role="form" action="profile.html">
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="email">Username:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="username" placeholder="Enter Username">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="pwd">Password:</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="pwd" placeholder="Enter Password">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="verify-pwd">Verify Password:</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="verify-pwd" placeholder="Verify Password">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="email">Email:</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="email" placeholder="Enter Email">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <a href="profile.html" class="btn btn-primary btn-block btn-default">Register</a>
-                    </div>
-                </div>
-            </form>
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="active"><a href="#">Forms</a></li>
+                <li role="presentation"><a href="#">Fields</a></li>
+            </ul>
+            <br>
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead class="table-header">
+                    <tr>
+                        <td><span class="glyphicon glyphicon-triangle-bottom"></span> Form Name</td>
+                        <td><span class="glyphicon glyphicon-triangle-bottom"></span> Action</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="formname" placeholder="Form Name"></td>
+                        <td>
+                            <a href="#"><span class="glyphicon glyphicon-plus"></span></a>
+                            <a href="#"><span class="glyphicon glyphicon-ok"></span></a>
+                        </td>
+                    </tr>
+                    </thead>
+                    <tbody class="table-body">
+                    <tr>
+                        <td>Registration Form</td>
+                        <td>
+                            <a href="#"><span class="glyphicon glyphicon-remove"></span></a>
+                            <a href="#"><span class="glyphicon glyphicon-pencil"></span></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Contact List</td>
+                        <td>
+                            <a href="#"><span class="glyphicon glyphicon-remove"></span></a>
+                            <a href="#"><span class="glyphicon glyphicon-pencil"></span></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>To-Do List</td>
+                        <td>
+                            <a href="#"><span class="glyphicon glyphicon-remove"></span></a>
+                            <a href="#"><span class="glyphicon glyphicon-pencil"></span></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     </div>
 </div>
