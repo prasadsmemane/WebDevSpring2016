@@ -1,0 +1,92 @@
+.form-horizontal .control-label {
+    text-align: left;
+}
+
+.table-header {
+    font-weight: bold;
+}
+
+.forms-plus {
+    font-size: 20px;
+}
+
+.forms-ok {
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.forms-remove {
+    font-size: 20px;
+}
+
+.forms-pencil {
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.form-fields-plus {
+    margin-top: 8px;
+    float : left;
+    font-size: 30px;
+}
+
+.form-fields-remove {
+    margin-top: 8px;
+    float : left;
+    font-size: 30px;
+}
+
+.form-fields-align-justify {
+    margin-top: 8px;
+    float : left;
+    font-size: 30px;
+}
+
+.form-fields-pencil {
+    margin-top: 8px;
+    margin-left: 200px;
+    float : left;
+    font-size: 30px;
+}
+
+hr {
+    border-color: darkgrey;
+}
+
+.border-less td, .border-less th {
+    border: none;
+}
+
+.plus-inorder {
+    margin-left: 237px;
+}
+
+/* Increasing the height of dropdown */
+/* Safari and Chrome */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    select {
+        height:35px;
+        line-height:35px;
+        background:white;
+    }
+}
+
+/* Remove button padding in FireFox*/
+select::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+/* Targets Firefox only */
+@-moz-document url-prefix() {
+    select {
+        padding: 15px 0!important;
+    }
+}
+
+/* IE Hacks: targets IE 8, 9 and 10 */
+@media screen\0 {
+    select {
+        height:30px;
+        line-height:30px;
+    }
+}
