@@ -70,7 +70,7 @@
                 "_id": userId,
                 "firstName": user.firstName,
                 "lastName": user.lastName,
-                "userName": user.username,
+                "username": user.username,
                 "password": user.password,
                 "roles": currentUser.roles,
                 "email": user.email
@@ -99,8 +99,6 @@
         //Find user by credentials
         function findUserByCredentials(username, password, callback) {
             var userPresent = null;
-            console.log(username);
-            console.log(password);
             for(var user in model.users) {
                 if(model.users[user].username === username && model.users[user].password === password) {
                     userPresent = model.users[user];

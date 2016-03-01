@@ -18,31 +18,17 @@
             <tr>
                 <td><input type="text" id="formname" placeholder="Form Name"></td>
                 <td>
-                    <a href="#"><span class="glyphicon glyphicon-plus forms-plus"></span></a>
-                    <a href="#"><span class="glyphicon glyphicon-ok forms-ok"></span></a>
+                    <a ng-click="addForm()"><span class="glyphicon glyphicon-plus forms-plus"></span></a>
+                    <a ng-click="updateForm()"><span class="glyphicon glyphicon-ok forms-ok"></span></a>
                 </td>
             </tr>
             </thead>
             <tbody class="table-body">
-            <tr>
-                <td>Registration Form</td>
+            <tr ng-repeat="form in forms | filter:currentUserForms">
+                <td>{{form.title}}</td>
                 <td>
-                    <a href="#"><span class="glyphicon glyphicon-remove forms-remove"></span></a>
-                    <a href="#"><span class="glyphicon glyphicon-pencil forms-pencil"></span></a>
-                </td>
-            </tr>
-            <tr>
-                <td>Contact List</td>
-                <td>
-                    <a href="#"><span class="glyphicon glyphicon-remove forms-remove"></span></a>
-                    <a href="#"><span class="glyphicon glyphicon-pencil forms-pencil"></span></a>
-                </td>
-            </tr>
-            <tr>
-                <td>To-Do List</td>
-                <td>
-                    <a href="#"><span class="glyphicon glyphicon-remove forms-remove"></span></a>
-                    <a href="#"><span class="glyphicon glyphicon-pencil forms-pencil"></span></a>
+                    <a ng-click="deleteForm($index)"><span class="glyphicon glyphicon-remove forms-remove"></span></a>
+                    <a ng-click="selectForm($index)"><span class="glyphicon glyphicon-pencil forms-pencil"></span></a>
                 </td>
             </tr>
             </tbody>

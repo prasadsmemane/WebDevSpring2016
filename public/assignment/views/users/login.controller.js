@@ -2,23 +2,31 @@
     "use strict";
     angular
         .module("FormBuilderApp")
-        .controller("LoginController", loginController)
+        .controller("LoginController", LoginController)
 
-    function loginController($scope, $location, $rootScope, UserService) {
+    function LoginController($scope, $location, $rootScope, UserService) {
         $scope.login = login;
 
-        function login(username, password) {
-            //var username = $scope.username;
-            //var password = $scope.password;
-            console.log(username);
-            console.log(password);
-            UserService.findUserByCredentials(username, password, function(callback) {
-                if (angular.isUndefined(callback) || callback === null) {
-                    $rootScope.currentUser = callback;
-                    UserService.setCurrentUser(callback);
-                    $location.url('/profile');
-                }
-            });
+        function login() {
+            UserService.findUserByCredentials($scope.user.username, $scope.user.password, callback);
+        }
+
+        function callback(user) {
+            console.log(user);
+            if (user !== null) {
+                $rootScope.currentUser = user;
+                UserService.setCurrentUser(user);
+                console.log("Call back in login");
+                if(isAdmin(user))
+                    $location.url('/admin');
+                $location.url('/profile');
+            }
+        }
+
+        function isAdmin(user) {
+            if(angular.isUndefined(user))
+                return false;
+            return user.roles.indexOf('admin') !== -1;
         }
     }
 }());

@@ -9,12 +9,13 @@
             </button>
             <a class="navbar-brand" href="#/home">Form Maker</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
+        <div id="navbar" class="navbar-collapse collapse" ng-controller="HeaderController">
             <ul class="nav navbar-nav navbar-right">
-                <li ng-class="{'active': $location.url() == '/register'}"><a href="#/register">Register</a></li>
-                <li><a href="#/login">Login</a></li>
-                <li><a href="#">Username</a></li>
-                <li><a href="#">Logout</a></li>
+                <li ng-class="{active:isActive('/register')}"><a ng-show="!currentUser" href="#/register">Register</a></li>
+                <li ng-class="{active:isActive('/login')}"><a ng-show="!currentUser" href="#/login">Login</a></li>
+                <li ng-class="{active:isActive('/admin')}"><a ng-show="isAdmin()" href="#/admin">Admin</a></li>
+                <li ng-class="{active:isActive('/profile')}"><a ng-show="isNotAdmin()" href="#/profile">{{currentUser.username}}</a></li>
+                <li><a ng-show="currentUser" ng-click="logout()">Logout</a></li>
             </ul>
         </div>
     </div>
