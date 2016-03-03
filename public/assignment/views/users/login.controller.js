@@ -12,14 +12,13 @@
         }
 
         function callback(user) {
-            console.log(user);
             if (user !== null) {
                 $rootScope.currentUser = user;
                 UserService.setCurrentUser(user);
-                console.log("Call back in login");
                 if(isAdmin(user))
                     $location.url('/admin');
-                $location.url('/profile');
+                else
+                    $location.url('/profile');
             }
         }
 

@@ -8,7 +8,6 @@
     function HeaderController($location, $scope, UserService) {
         $scope.isActive = isActive;
         $scope.isAdmin = isAdmin;
-        $scope.isNotAdmin = isNotAdmin;
         $scope.logout = logout;
 
         function isActive(route) {
@@ -20,10 +19,6 @@
             if(angular.isUndefined(currentUser))
                 return false;
             return currentUser.roles.indexOf('admin') !== -1;
-        }
-
-        function isNotAdmin() {
-            return $scope.currentUser && !isAdmin();
         }
 
         function logout(){

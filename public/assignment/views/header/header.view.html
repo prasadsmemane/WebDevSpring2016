@@ -14,7 +14,7 @@
                 <li ng-class="{active:isActive('/register')}"><a ng-show="!currentUser" href="#/register">Register</a></li>
                 <li ng-class="{active:isActive('/login')}"><a ng-show="!currentUser" href="#/login">Login</a></li>
                 <li ng-class="{active:isActive('/admin')}"><a ng-show="isAdmin()" href="#/admin">Admin</a></li>
-                <li ng-class="{active:isActive('/profile')}"><a ng-show="isNotAdmin()" href="#/profile">{{currentUser.username}}</a></li>
+                <li ng-class="{active:isActive('/profile')}"><a ng-show="currentUser" href="#/profile">{{currentUser.username}}</a></li>
                 <li><a ng-show="currentUser" ng-click="logout()">Logout</a></li>
             </ul>
         </div>

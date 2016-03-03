@@ -22,7 +22,8 @@
             findAllFormsForUser: findAllFormsForUser,
             deleteFormById: deleteFormById,
             updateFormById: updateFormById,
-            findFormById: findFormById
+            findFormById: findFormById,
+            checkIfFormExists : checkIfFormExists
         };
 
         return service;
@@ -34,7 +35,7 @@
                 userId: userId
             };
             forms.push(newForm);
-            callback(newForm);
+            callback();
         }
 
         function findAllFormsForUser(userId, callback) {
@@ -48,30 +49,42 @@
         }
 
         function deleteFormById(formId, callback) {
-            var formToDelete = findFormById(formId);
-            forms.splice(formToDelete, 1);
-            callback(forms);
+            for (var i = 0; i < forms.length; i++) {
+                if (forms[i]._id == formId) {
+                    forms.splice(i, 1);
+                    break;
+                }
+            }
+            callback();
         }
 
         function updateFormById(formId, newForm, callback) {
-            var currentForm = findFormById(formId);
-            var updatedForm = {
-                _id: formId,
-                title: newForm.title,
-                userId: newForm.userId
-            }
-
-            forms[currentForm] = updatedForm;
-            callback(updatedForm);
+            forms.forEach(function(f) {
+                if(f._id === formId) {
+                    f.title = newForm.title;
+                }
+            });
+            callback();
         }
 
         function findFormById(formId) {
-            for (var form in forms) {
-                if (forms[form]._id === formId) {
-                    return forms[form];
+            forms.forEach(function(f) {
+                if (f._id === formId) {
+                    return f;
                 }
-            }
+            });
             return null;
+        }
+
+        function checkIfFormExists(userId, formName) {
+            var formsByName = forms.filter(function(form) {
+                return (form.userId == userId && form.title == formName);
+            });
+
+            if(formsByName.length != 0)
+                return true;
+            else
+                return false;
         }
 
     }
