@@ -57,8 +57,12 @@
                 "_id": new Date().getTime(),
                 "username": user.username,
                 "password": user.password,
+                "firstName": user.firstName,
+                "lastName": user.lastName,
+                "roles": [],
                 "email": user.email
             }
+            console.log(newUser);
             model.users.push(newUser);
             callback(newUser);
         }
