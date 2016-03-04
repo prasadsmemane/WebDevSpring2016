@@ -4,7 +4,7 @@
         .module("FormBuilderApp")
         .controller("FormsController", FormsController)
 
-    function FormsController($scope, $location, FormService) {
+    function FormsController($scope, FormService) {
         var currentUser = $scope.currentUser;
         var userId = currentUser._id;
 
