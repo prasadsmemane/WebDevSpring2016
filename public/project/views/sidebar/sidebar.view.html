@@ -1,0 +1,9 @@
+<div ng-controller="SidebarController">
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav side-nav">
+            <li ng-class="{active:isActive('/home')}"><a href="#/home"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+            <li ng-class="{active:isActive('/profile')}"><a ng-show="currentUser" href="#/profile"><span class="glyphicon glyphicon-user"></span>Profile</a></li>
+            <li ng-class="{active:isActive('/admin')}"><a ng-show="isAdmin()" href="#/admin"><span class="glyphicon glyphicon-globe"></span>Admin</a></li>
+        </ul>
+    </div>
+</div>
