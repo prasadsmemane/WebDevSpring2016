@@ -25,9 +25,10 @@
                 url: NEWS_URL,
                 headers: {
                     "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Headers": "Content-Type",
-                    "Ocp-Apim-Subscription-Key" : "f10779725e0a4d42a3928e0c3155f442"
-
+                    "Access-Control-Allow-Credentials": "true",
+                    "Access-Control-Allow-Methods": "POST, GET, HEAD, OPTIONS",
+                    "Access-Control-Allow-Headers": "Origin, Accept, x-auth-token, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers",
+                    "Ocp-Apim-Subscription-Key": "f10779725e0a4d42a3928e0c3155f442"
                 }
             }).success(renderNews);
         }

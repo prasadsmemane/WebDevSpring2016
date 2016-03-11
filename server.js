@@ -1,5 +1,9 @@
 var express = require('express');
+var cors = require('cors');
 var app = express();
+
+app.options('*', cors());
+
 app.use(express.static(__dirname + '/public'));
 
 app.get('/hello', function(req, res){
@@ -34,6 +38,6 @@ app.get('/assignment', function(req, res){
     res.sendfile('/assignment/index.html');
 });
 
-app.get('/project', function(req, res){
+app.get('/project', cors(), function(req, res){
     res.sendfile('/project/index.html');
 });
