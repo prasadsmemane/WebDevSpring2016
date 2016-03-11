@@ -28,10 +28,14 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="email">Favourite Sports:</label>
-            <div class="col-sm-4">
-                <span ng-repeat="sport in sports" class="checkbox-inline">
-                    <label><input type="checkbox" ng-model="user.sports">{{sport.name}}</label>
+            <label class="control-label col-sm-2" for="sports">Favourite Sports:</label>
+            <div class="col-sm-4" id="sports">
+                <span ng-repeat="sport in sports" class="checkbox">
+                    <label>
+                        <input type="checkbox" name="selectedSports[]" value="{{sport.name}}"
+                               ng-checked="selection.indexOf(sport) > -1" ng-click="toggleSelection(sport.name)">
+                        {{sport.name}}
+                    </label>
                 </span>
             </div>
         </div>

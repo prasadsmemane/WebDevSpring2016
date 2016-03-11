@@ -23,8 +23,21 @@ body {
     color: white;
 }
 
-.glyphicon {
+.fa {
     margin-right: 8px;
+    font-size: 18px;
+}
+
+.fa-crud {
+    font-size: 32px;
+}
+
+.fa-times {
+    color: red;
+}
+
+.fa-check {
+    color: green;
 }
 
 #wrapper {

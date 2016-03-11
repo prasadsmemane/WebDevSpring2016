@@ -55,6 +55,11 @@ a:focus {
     font-weight: 400;
 }
 
+.navbar-brand {
+    font-style: italic;
+    font-family: Jura;
+}
+
 .navbar-custom {
     margin-bottom: 0;
     border-bottom: 1px solid rgba(255,255,255,.3);
@@ -156,6 +161,8 @@ a:focus {
 
 .intro .intro-body .brand-heading {
     font-size: 40px;
+    font-style: italic;
+    font-family: Jura;
 }
 
 .intro .intro-body .intro-text {

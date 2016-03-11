@@ -25,7 +25,7 @@
         function isAdmin(user) {
             if(angular.isUndefined(user))
                 return false;
-            return user.roles.indexOf('admin') !== -1;
+            return user.roles === "admin";
         }
     }
 }());

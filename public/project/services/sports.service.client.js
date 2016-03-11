@@ -30,8 +30,8 @@
                 _id: new Date().getTime(),
                 name: sport.name,
             };
-            forms.push(newSport);
-            callback();
+            sports.push(newSport);
+            callback(newSport);
         }
 
         function findAllSports(callback) {
