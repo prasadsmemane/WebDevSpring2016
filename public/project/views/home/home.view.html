@@ -2,15 +2,23 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header col-sm-offset-1">
-            Work in Progress <small>Please check back later</small>
+            Recent News!
         </h1>
 
         <div class="table-responsive table-striped col-sm-offset-1">
-            <table class="table">
+            <table class="table table-borderless">
                 <tbody class="table-body">
-                <tr ng-repeat="news in recentNews" ng-class="{selected: $index==selectedIndex}">
-                    <td>{{news.Title}}</td>
-                </tr>
+                    <tr ng-repeat-start="news in recentNews">
+                        <tr>
+                            <td>Title: {{news.Title}}</td>
+                        </tr>
+                        <tr>
+                            <td>Content: {{news.Content}}</td>
+                        </tr>
+                        <tr>
+                            <td>URL: {{news.Url}}</td>
+                        </tr>
+                    <tr ng-repeat-end>
                 </tbody>
             </table>
         </div>

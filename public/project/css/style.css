@@ -19,6 +19,10 @@ body {
     font-family: Jura;
 }
 
+.table-borderless td, .table-borderless th {
+    border: 0px !important;
+}
+
 .container-fluid {
     color: white;
 }
