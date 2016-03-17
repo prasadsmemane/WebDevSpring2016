@@ -49,7 +49,7 @@ function getNews(req, res) {
     req.end();
 }
 
-
+require('./public/assignment/server/app.js')(app);
 
 
 //Connection configuration for local and openshift
