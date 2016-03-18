@@ -17,6 +17,7 @@ module.exports = function() {
     function createUser(user) {
         user._id = new Date().getTime();
         users.push(user);
+        return user;
     }
 
     //Find user by credentials
@@ -52,10 +53,10 @@ module.exports = function() {
         var updatedUser = null;
         for(var u in users){
             if(users[u]._id == userId){
-                users[u].firstName = users[u].firstName || u.firstName;
-                users[u].lastName = users[u].lastName || u.lastName;
-                users[u].username = users[u].username || u.username;
-                users[u].password = users[u].password || u.password;
+                users[u].firstName = user.firstName || users[u].firstName ;
+                users[u].lastName = user.lastName || users[u].lastName;
+                users[u].username = user.username || users[u].username;
+                users[u].password = user.password || users[u].password;
                 updatedUser = users[u];
                 break;
             }

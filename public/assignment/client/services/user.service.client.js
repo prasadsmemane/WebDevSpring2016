@@ -31,17 +31,17 @@
 
         //Create a new User
         function createUser(user) {
-            return $http.post("/api/assignments/user", user);
+            return $http.post("/api/assignment/user", user);
         }
 
         //Update the current user
         function updateUser(userId, user) {
-            return $http.put("/api/assignments/user/" + userId, user);
+            return $http.put("/api/assignment/user/" + userId, user);
         }
 
         //Delete user by id
         function deleteUserById(userId) {
-            return $http.delete("/api/assignments/user/" + userId);
+            return $http.delete("/api/assignment/user/" + userId);
         }
 
         //Find user by credentials
@@ -51,7 +51,7 @@
 
         //Return all the users
         function findAllUsers() {
-            return $http.get("/api/assignments/user");
+            return $http.get("/api/assignment/user");
         }
 
         //Login user by credentials

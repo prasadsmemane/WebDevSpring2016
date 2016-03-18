@@ -9,9 +9,11 @@ module.exports = function(app, userModel) {
     app.post("/api/assignment/login", login);
 
     function createUser(req, res) {
-            var user = req.body;
-            user = userModel.createUser(user);
-            res.json(userModel.findAllUsers());
+        var user = req.body;
+        user = userModel.createUser(user);
+        res.json(user);
+        //Not returning all the users, since after login, we need the newly created user as the currentUser on client side
+        //res.json(userModel.findAllUsers());
     }
 
     function findAllUsers(req, res) {
@@ -46,7 +48,7 @@ module.exports = function(app, userModel) {
         var userId = req.params.id;
         var user = req.body;
         var updatedUser = userModel.updateUser(userId, user);
-        res.json(userModel.findAllUsers());
+        res.json(updatedUser);
     }
 
     function deleteUserById(req, res) {

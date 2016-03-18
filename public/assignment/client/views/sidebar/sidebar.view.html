@@ -1,8 +1,24 @@
 <div class="col-sm-3 col-md-2 sidebar" ng-controller="SidebarController">
     <ul class="nav nav-sidebar">
-        <li ng-class="{active:isActive('/home')}"><a href="#/home"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-        <li ng-class="{active:isActive('/profile')}"><a ng-show="currentUser" href="#/profile"><span class="glyphicon glyphicon-user"></span>Profile</a></li>
-        <li ng-class="{active:isActive('/admin')}"><a ng-show="isAdmin()" href="#/admin"><span class="glyphicon glyphicon-globe"></span>Admin</a></li>
-        <li ng-class="{active:isActive('/forms')}"><a ng-show="currentUser" href="#/forms"><span class="glyphicon glyphicon-edit"></span>Forms</a></li>
+        <li ng-class="{active:isActive('/home')}">
+            <a href="#/home">
+                <span class="glyphicon glyphicon-home"></span>Home
+            </a>
+        </li>
+        <li ng-class="{active:isActive('/profile')}">
+            <a ng-show="currentUser" href="#/profile">
+                <span class="glyphicon glyphicon-user"></span>Profile
+            </a>
+        </li>
+        <li ng-class="{active:isActive('/admin')}">
+            <a ng-show="currentUser && currentUser.roles.indexOf('admin') >= 0" href="#/admin">
+                <span class="glyphicon glyphicon-globe"></span>Admin
+            </a>
+        </li>
+        <li ng-class="{active:isActive('/forms')}">
+            <a ng-show="currentUser" href="#/forms">
+                <span class="glyphicon glyphicon-edit"></span>Forms
+            </a>
+        </li>
     </ul>
 </div>

@@ -4,6 +4,7 @@ var https = require('https');
 var multer = require('multer');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
+var uuid = require('node-uuid');
 var public_folder = __dirname + '/public';
 var app = express();
 

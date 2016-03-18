@@ -11,11 +11,21 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse" ng-controller="HeaderController">
             <ul class="nav navbar-nav navbar-right">
-                <li ng-class="{active:isActive('/register')}"><a ng-show="!currentUser" href="#/register">Register</a></li>
-                <li ng-class="{active:isActive('/login')}"><a ng-show="!currentUser" href="#/login">Login</a></li>
-                <li ng-class="{active:isActive('/admin')}"><a ng-show="isAdmin()" href="#/admin">Admin</a></li>
-                <li ng-class="{active:isActive('/profile')}"><a ng-show="currentUser" href="#/profile">{{currentUser.username}}</a></li>
-                <li><a ng-show="currentUser" ng-click="logout()">Logout</a></li>
+                <li ng-class="{active:isActive('/register')}" ng-hide="currentUser">
+                    <a href="#/register">Register</a>
+                </li>
+                <li ng-class="{active:isActive('/login')}" ng-hide="currentUser">
+                    <a href="#/login">Login</a>
+                </li>
+                <li ng-class="{active:isActive('/admin')}" ng-show="currentUser && currentUser.roles.indexOf('admin') >= 0">
+                    <a href="#/admin">Admin</a>
+                </li>
+                <li ng-class="{active:isActive('/profile')}" ng-show="currentUser">
+                    <a href="#/profile">{{currentUser.username}}</a>
+                </li>
+                <li ng-show="currentUser">
+                    <a ng-click="logout()">Logout</a>
+                </li>
             </ul>
         </div>
     </div>

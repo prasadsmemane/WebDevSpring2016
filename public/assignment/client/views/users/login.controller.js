@@ -10,9 +10,11 @@
         function login() {
 
             UserService.loginUserByCredentials($scope.user.username, $scope.user.password)
-                .then(function(res) {
-                    if(res.data !== "null") {
-                        $rootScope.currentUser = res.data;
+                .then(function(response) {
+                    if(response.data !== "null") {
+                        UserService.setCurrentUser(response.data);
+                        console.log("Logged In as");
+                        console.log($rootScope.currentUser);
                         $location.url("/profile");
                     }
                     else {
