@@ -4,17 +4,14 @@
         .module("FormBuilderApp")
         .controller("LoginController", LoginController)
 
-    function LoginController($scope, $location, $rootScope, UserService, $http) {
+    function LoginController($scope, $location, $rootScope, UserService) {
         $scope.login = login;
 
         function login() {
-            var credentials = {
-                username: $scope.user.username,
-                password: $scope.user.password
-            }
-            $http.post("/api/assignment/login", credentials)
+
+            UserService.loginUserByCredentials($scope.user.username, $scope.user.password)
                 .then(function(res) {
-                    if(res.data) {
+                    if(res.data !== "null") {
                         $rootScope.currentUser = res.data;
                         $location.url("/profile");
                     }
@@ -22,17 +19,6 @@
                         $scope.errorMessage = "Invalid Credentials";
                     }
                 });
-        }
-
-        function callback(user) {
-            if (user !== null) {
-                $rootScope.currentUser = user;
-                UserService.setCurrentUser(user);
-                if(isAdmin(user))
-                    $location.url('/admin');
-                else
-                    $location.url('/profile');
-            }
         }
 
         function isAdmin(user) {

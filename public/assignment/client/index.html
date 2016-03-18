@@ -10,25 +10,25 @@
     <meta name="description" content="Assignment1">
     <meta name="author" content="Prasad Memane">
     <!-- Downloaded from http://www.favicon-generator.org/ -->
-    <link rel="icon" href="client/images/favicon.ico">
+    <link rel="icon" href="images/favicon.ico">
 
     <title>Index</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <!-- Custom css to override some bootstrap features -->
-    <link href="client/css/dashboard.css" rel="stylesheet"/>
-    <link href="client/css/style.css" rel="stylesheet"/>
+    <link href="css/dashboard.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
 
 </head>
 <body ng-controller="MainController">
 
-    <div ng-include="'client/views/header/header.view.html'">
+    <div ng-include="'views/header/header.view.html'">
     </div>
 
     <div class="container-fluid">
         <div class="row">
-            <div ng-include="'client/views/sidebar/sidebar.view.html'">
+            <div ng-include="'views/sidebar/sidebar.view.html'">
             </div>
             <div ng-view>
             </div>
@@ -56,20 +56,20 @@
     <script src="config.js"></script>
 
     <!-- Including controller files -->
-    <script src="client/views/main/main.controller.js"></script>
-    <script src="client/views/admin/admin.controller.js"></script>
-    <script src="client/views/forms/forms.controller.js"></script>
-    <script src="client/views/forms/fields.controller.js"></script>
-    <script src="client/views/header/header.controller.js"></script>
-    <script src="client/views/home/home.controller.js"></script>
-    <script src="client/views/sidebar/sidebar.controller.js"></script>
-    <script src="client/views/users/login.controller.js"></script>
-    <script src="client/views/users/profile.controller.js"></script>
-    <script src="client/views/users/register.controller.js"></script>
+    <script src="views/main/main.controller.js"></script>
+    <script src="views/admin/admin.controller.js"></script>
+    <script src="views/forms/forms.controller.js"></script>
+    <script src="views/forms/fields.controller.js"></script>
+    <script src="views/header/header.controller.js"></script>
+    <script src="views/home/home.controller.js"></script>
+    <script src="views/sidebar/sidebar.controller.js"></script>
+    <script src="views/users/login.controller.js"></script>
+    <script src="views/users/profile.controller.js"></script>
+    <script src="views/users/register.controller.js"></script>
 
     <!-- Including services files -->
-    <script src="client/services/user.service.client.js"></script>
-    <script src="client/services/forms.service.client.js"></script>
+    <script src="services/user.service.client.js"></script>
+    <script src="services/forms.service.client.js"></script>
 
 </body>
 </html>

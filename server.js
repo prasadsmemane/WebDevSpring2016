@@ -1,10 +1,18 @@
 var express = require('express');
 var cors = require('cors');
 var https = require('https');
+var multer = require('multer');
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var public_folder = __dirname + '/public';
 var app = express();
 
 app.use(cors());
-app.use(express.static(__dirname + '/public'));
+app.use(multer());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(express.static(public_folder));
 
 app.options('*', cors());
 
@@ -13,7 +21,7 @@ app.get('/hello', function(req, res){
 });
 
 app.get('/assignment', function(req, res){
-    res.sendfile('/assignment/index.html');
+    res.sendfile('/assignment/client/index.html');
 });
 
 app.get('/project', cors(), function(req, res){

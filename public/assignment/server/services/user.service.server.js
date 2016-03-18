@@ -2,17 +2,16 @@ module.exports = function(app, userModel) {
     app.post("/api/assignment/user", createUser);
     app.get("/api/assignment/user", findAllUsers);
     app.get("/api/assignment/user/:id", findUserById);
-    app.post("/api/assignment/user?username=username", findUserByUsername);
-    app.post("/api/assignment/user?username=:username&password=:password", findUserByCredentials);
+    app.get("/api/assignment/user?username=username", findUserByUsername);
+    app.get("/api/assignment/user?username=:username&password=:password", findUserByCredentials);
     app.put("/api/assignment/user/:id", updateUserById);
     app.delete("/api/assignment/user/:id", deleteUserById);
     app.post("/api/assignment/login", login);
 
     function createUser(req, res) {
-        var user = req.body;
-        console.log("USER IN SERVER: " + user);
-        user = userModel.createUser(user);
-        res.json(userModel.findAllUsers());
+            var user = req.body;
+            user = userModel.createUser(user);
+            res.json(userModel.findAllUsers());
     }
 
     function findAllUsers(req, res) {
@@ -38,6 +37,7 @@ module.exports = function(app, userModel) {
             username: username,
             password: password
         };
+        console.log(credentials);
         var user = userModel.findUserByCredentials(credentials);
         res.json(user);
     }
@@ -58,7 +58,6 @@ module.exports = function(app, userModel) {
     function login(req, res) {
         var credentials = req.body;
         var currentUser = userModel.findUserByCredentials(credentials);
-        req.session.currentUser = currentUser;
         res.json(currentUser);
     }
 

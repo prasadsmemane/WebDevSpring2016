@@ -10,8 +10,8 @@
             updateUser: updateUser,
             deleteUserById: deleteUserById,
 
-            findUserById: findUserById,
             findUserByCredentials: findUserByCredentials,
+            loginUserByCredentials: loginUserByCredentials,
             findAllUsers: findAllUsers,
 
             setCurrentUser: setCurrentUser,
@@ -30,52 +30,18 @@
         }
 
         //Create a new User
-        function createUser(user, callback) {
-            var newUser = {
-                "_id": new Date().getTime(),
-                "username": user.username,
-                "password": user.password,
-                "firstName": user.firstName,
-                "lastName": user.lastName,
-                "roles": [],
-                "email": user.email
-            }
-            console.log(newUser);
-            model.users.push(newUser);
-            callback(newUser);
+        function createUser(user) {
+            return $http.post("/api/assignments/user", user);
         }
 
         //Update the current user
-        function updateUser(userId, user, callback) {
-            var currentUser = findUserById(userId);
-            var updatedUser = {
-                "_id": userId,
-                "firstName": user.firstName,
-                "lastName": user.lastName,
-                "username": user.username,
-                "password": user.password,
-                "roles": currentUser.roles,
-                "email": user.email
-            }
-            model.users[currentUser] = updatedUser;
-            callback(updatedUser);
-        }
-
-        //Find user by id
-        function findUserById(userId) {
-            for(var user in model.users) {
-                if(model.users[user]._id === userId) {
-                    return model.users[user];
-                }
-            }
-            return null;
+        function updateUser(userId, user) {
+            return $http.put("/api/assignments/user/" + userId, user);
         }
 
         //Delete user by id
-        function deleteUserById(userId, callback) {
-            var userToBeDeleted = findUserById(userId);
-            model.users.splice(userToBeDeleted, 1);
-            callback(model.users);
+        function deleteUserById(userId) {
+            return $http.delete("/api/assignments/user/" + userId);
         }
 
         //Find user by credentials
@@ -84,8 +50,17 @@
         }
 
         //Return all the users
-        function findAllUsers(callback) {
-            callback(model.users);
+        function findAllUsers() {
+            return $http.get("/api/assignments/user");
+        }
+
+        //Login user by credentials
+        function loginUserByCredentials(username, password) {
+            var credentials = {
+                username: username,
+                password: password
+            }
+            return $http.post("/api/assignment/login", credentials);
         }
 
     }
