@@ -46,7 +46,7 @@
 
         //Find user by credentials
         function findUserByCredentials(username, password) {
-            return $http.post("/api/assignment/user?username=" + username + "&password=" + password);
+            return $http.get("/api/assignment/user?username=" + username + "&password=" + password);
         }
 
         //Return all the users

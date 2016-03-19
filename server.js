@@ -21,7 +21,7 @@ app.get('/hello', function(req, res){
     res.send('Hello World');
 });
 
-app.get('/assignment', function(req, res){
+app.get('/assignment/client', cors(), function(req, res){
     res.sendfile('/assignment/client/index.html');
 });
 
