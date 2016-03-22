@@ -17,30 +17,27 @@
             viewFormsForCurrentUser();
 
         function viewFormsForCurrentUser() {
-            FormService.findAllFormsForUser(userId, function(forms) {
-                $scope.form = {};
-                $scope.forms = forms;
-            });
+            FormService.findAllFormsForUser(userId)
+                .then(function(response) {
+                    $scope.form = {};
+                    $scope.forms = response.data;
+                });
         }
 
         function addForm() {
             var form = $scope.form;
             var formName = form.title;
-            var check = FormService.checkIfFormExists(userId, formName);
 
             if(angular.isUndefined(formName)|| formName.trim() === "" || formName === null) {
                 alert("Please enter a form title");
                 return;
             }
 
-            if(check === false) {
-                FormService.createFormForUser(userId, form, function() {
+
+            FormService.createFormForUser(userId, form)
+                .then(function(response) {
                     viewFormsForCurrentUser();
                 });
-            }
-            else {
-                alert("Form title already exists");
-            }
         }
 
         function updateForm() {
@@ -59,7 +56,8 @@
                 return;
             }
 
-            FormService.updateFormById(changeForm._id, changeForm, function() {
+            FormService.updateFormById(changeForm._id, changeForm)
+                .then(function() {
                 viewFormsForCurrentUser();
             });
         }
@@ -77,7 +75,8 @@
         function deleteForm(index) {
             var formId = $scope.forms[index]._id;
 
-            FormService.deleteFormById(formId, function() {
+            FormService.deleteFormById(formId)
+                .then(function(response) {
                 viewFormsForCurrentUser();
             });
         }

@@ -8,6 +8,7 @@ module.exports = function() {
         findFormById: findFormById,
         findAllForms: findAllForms,
         findFormByTitle: findFormByTitle,
+        findFormByNameForUser: findFormByNameForUser,
         updateFormById: updateFormById,
 
         createFormField: createFormField,
@@ -64,8 +65,20 @@ module.exports = function() {
 
     function findFormByTitle(title) {
         for(var f in forms) {
-            if (forms[f].title == title) {
+            if (forms[f].title === title) {
                 return forms[f];
+            }
+        }
+        return null;
+    }
+
+    function findFormByNameForUser(userId, formName) {
+        var userForms = findAllFormsForUser(userId);
+        if(userForms !== null) {
+            for(var f in userForms) {
+                if(userForms[f].title === formName) {
+                    return userForms[f];
+                }
             }
         }
         return null;

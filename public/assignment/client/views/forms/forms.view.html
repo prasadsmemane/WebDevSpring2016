@@ -3,8 +3,8 @@
     <br>
 
     <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="#">Forms</a></li>
-        <li role="presentation"><a href="#/fields">Fields</a></li>
+        <li role="presentation" class="active"><a href="#/forms">Forms</a></li>
+        <li ng-show= "model.form" role="presentation"><a href="#/form/{{model.form._id}}/fields">Fields</a></li>
     </ul>
     <br>
 
@@ -18,17 +18,17 @@
             <tr>
                 <td><input ng-model="form.title" type="text" class="form-control" id="formname" placeholder="Form Name"></td>
                 <td>
-                    <a ng-click="addForm()"><span class="glyphicon glyphicon-plus forms-plus"></span></a>
-                    <a ng-click="updateForm()"><span class="glyphicon glyphicon-ok forms-ok"></span></a>
+                    <a ng-click="addForm()"><span class="glyphicon glyphicon-plus btn btn-primary"></span></a>
+                    <a ng-click="updateForm()"><span class="glyphicon glyphicon-ok btn btn-success"></span></a>
                 </td>
             </tr>
             </thead>
             <tbody class="table-body">
             <tr ng-repeat="form in forms | filter:currentUserForms" ng-class="{selected: $index==selectedIndex}">
-                <td>{{form.title}}</td>
+                <td><a href="#/form/{{form._id}}/fields">{{form.title}}</a></td>
                 <td>
-                    <a ng-click="deleteForm($index)"><span class="glyphicon glyphicon-remove forms-remove"></span></a>
-                    <a ng-click="selectForm($index)"><span class="glyphicon glyphicon-pencil forms-pencil"></span></a>
+                    <span ng-click="deleteForm($index)" class="glyphicon glyphicon-remove btn btn-danger"></span>
+                    <span ng-click="selectForm($index)" class="glyphicon glyphicon-pencil btn btn-warning"></span>
                 </td>
             </tr>
             </tbody>

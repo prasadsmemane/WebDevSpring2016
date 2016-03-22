@@ -22,34 +22,27 @@
                 title: form.title,
                 userId: userId
             };
-            $http.post("/api/assignment/user/" + userId + "/form", newForm);
+            return $http.post("/api/assignment/user/" + userId + "/form", newForm);
         }
 
         function findAllFormsForUser(userId) {
-            $http.get("/api/assignment/user/" + userId + "/form");
+            return $http.get("/api/assignment/user/" + userId + "/form");
         }
 
         function deleteFormById(formId) {
-            $http.delete("/api/assignment/form/" + formId);
+            return $http.delete("/api/assignment/form/" + formId);
         }
 
         function updateFormById(formId, newForm) {
-            $http.put("/api/assignment/form/" + formId, newForm)
+            return $http.put("/api/assignment/form/" + formId, newForm)
         }
 
         function findFormById(formId) {
-            $http.get("/api/assignment/form/" + formId);
+            return $http.get("/api/assignment/form/" + formId);
         }
 
         function checkIfFormExists(userId, formName) {
-            var formsByName = forms.filter(function(form) {
-                return (form.userId == userId && form.title == formName);
-            });
-
-            if(formsByName.length != 0)
-                return true;
-            else
-                return false;
+            return $http.get("/api/assignment/user/" + userId + "/form/" + formName);
         }
 
     }
