@@ -36,3 +36,7 @@ hr {
 .glyphicon-hide {
     visibility: hidden;
 }
+
+.input-group-btn.input-space {
+    padding-left: 15px;
+}

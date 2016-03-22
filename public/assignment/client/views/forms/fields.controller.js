@@ -24,10 +24,12 @@
         function init() {
             FieldService.getFieldsForForm(formId).then(function(response) {
                 x.fields = response.data;
+                console.log(response.data);
             });
 
             FormService.findFormById(formId).then(function(response) {
                 x.form = response.data;
+                console.log(response.data);
             });
         }
 
@@ -37,7 +39,21 @@
 
         }
 
+        function addSameField(field) {
 
+        }
+
+        function deleteField(field) {
+
+        }
+
+        function reOrderField(field) {
+
+        }
+
+        function addField(fieldType) {
+
+        }
 
     }
 }());
