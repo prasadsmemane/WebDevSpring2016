@@ -18,16 +18,16 @@
                     <textarea ng-switch-when="TEXTAREA" class="form-control" placeholder="{{field.placeholder}}"></textarea>
                     <input ng-switch-when="DATE" type="date" class="form-control" placeholder="Select Date">
                     <select ng-switch-when="OPTIONS" class="col-xs-4 form-control">
-                        <option ng-repeat="option in field.options">{{option.label}}</option>
+                        <option ng-repeat="option in field.options"> {{option.label}}</option>
                     </select>
                     <div ng-switch-when="CHECKBOXES">
                         <div ng-repeat="option in field.options">
-                            <label><input type="checkbox" value="{{option.value}}">{{option.label}}</label>
+                            <label><input type="checkbox" value="{{option.value}}"> {{option.label}}</label>
                         </div>
                     </div>
                     <div ng-switch-when="RADIOS">
                         <div ng-repeat="option in field.options">
-                            <label><input type="radio" value="{{option.value}}">{{option.label}}</label>
+                            <label><input type="radio" value="{{option.value}}"> {{option.label}}</label>
                         </div>
                     </div>
                 </div>
@@ -44,9 +44,9 @@
 
         <hr/>
 
-        <label>Add New Field:</label>
+        <label for id="addFiled">Add New Field:</label>
         <div class="input-group">
-            <select class="col-xs-8 form-control">
+            <select ng-model = "fieldType" class="col-xs-8 form-control" id="addField">
                 <option value="TEXT">Single Line Text</option>
                 <option value="TEXTAREA">Multi Line Text</option>
                 <option value="DATE">Date</option>
@@ -55,7 +55,7 @@
                 <option value="RADIOS">Radio buttons</option>
             </select>
             <div class="input-group-btn input-space">
-                <span ng-click="model.addField(model.fieldType)" class="glyphicon glyphicon-plus btn btn-success"></span>
+                <span ng-click="model.addField(fieldType)" class="glyphicon glyphicon-plus btn btn-success"></span>
             </div>
         </div>
     </form>
