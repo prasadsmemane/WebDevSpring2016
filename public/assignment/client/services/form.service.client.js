@@ -18,7 +18,6 @@
 
         function createFormForUser(userId, form) {
             var newForm = {
-                _id: new Date().getTime(),
                 title: form.title,
                 userId: userId
             };

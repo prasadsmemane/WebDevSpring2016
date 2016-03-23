@@ -1,3 +1,4 @@
+var uuid = require('node-uuid');
 var forms = require('./form.mock.json');
 
 module.exports = function() {
@@ -22,7 +23,7 @@ module.exports = function() {
 
     function createFormForUser(userId, form) {
         var newForm = {
-            _id: new Date().getTime(),
+            _id: uuid.v1(),
             title: form.title,
             userId: userId
         };
@@ -97,7 +98,7 @@ module.exports = function() {
     function createFormField(formId, field) {
         for(var f in forms) {
             if(forms[f]._id == formId){
-                field._id = (new Date()).getTime();
+                field._id = uuid.v1();
                 forms[f].fields.push(field);
                 return forms[f].fields;
             }

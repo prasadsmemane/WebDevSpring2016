@@ -1,3 +1,4 @@
+var uuid = require('node-uuid');
 var users = require("./user.mock.json");
 
 module.exports = function() {
@@ -15,7 +16,7 @@ module.exports = function() {
 
     //Create a new User
     function createUser(user) {
-        user._id = new Date().getTime();
+        user._id = uuid.v1();
         users.push(user);
         return user;
     }
