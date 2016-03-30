@@ -14,24 +14,30 @@
             viewAllSports();
 
         function viewAllSports() {
-            SportsService.findAllSports(function (sports) {
-                $scope.newSport = {};
-                $scope.sports = sports;
-
-            });
+            SportsService.findAllSports()
+                .then(function (response) {
+                    setSports(response);
+                });
         }
 
         function deleteSport(index) {
             var sportId = $scope.sports[index]._id;
-            SportsService.deleteSportById(sportId, function(users) {
-                viewAllSports();
-            });
+            SportsService.deleteSportById(sportId)
+                .then(function(response) {
+                    setSports(response)
+                });
         }
 
         function addSport() {
-            SportsService.createNewSport($scope.newSport, function(sport) {
-                viewAllSports();
-            })
+            SportsService.createNewSport($scope.newSport)
+                .then(function(response) {
+                    setSports(response);
+                });
+        }
+
+        function setSports(response) {
+            $scope.newSport = {};
+            $scope.sports = response.data;
         }
     }
 }());

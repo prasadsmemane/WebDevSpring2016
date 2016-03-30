@@ -12,8 +12,8 @@
         $scope.toggleSelection = toggleSelection;
         $scope.selection = [];
 
-        SportsService.findAllSports(function(sports) {
-            $scope.sports = sports;
+        SportsService.findAllSports().then(function(response) {
+            $scope.sports = response.data;
             for (var sport in currentUser.sports) {
                 $scope.selection.push(currentUser.sports[sport]);
             }
@@ -46,12 +46,32 @@
         function update(){
             $rootScope.currentUser.sports = $scope.selection;
             currentUser = $rootScope.currentUser;
-            UserService.updateUser(currentUser._id, currentUser, callback);
-        }
 
-        function callback(user) {
-            UserService.setCurrentUser(user);
-            $location.url('/profile');
+            if(angular.isUndefined(currentUser) || !currentUser.username){
+                $scope.errorMessage = "Please provide a username";
+                return;
+            }
+            if(!currentUser.password){
+                $scope.errorMessage = "Please provide a password";
+                return;
+            }
+
+            if(!currentUser.email){
+                $scope.errorMessage = "Please provide an email";
+                return;
+            }
+
+            if(currentUser.sports.length === 0) {
+                $scope.errorMessage = "Please select at least one favourite sports";
+                return;
+            }
+
+            UserService.updateUser($rootScope.currentUser._id, $rootScope.currentUser)
+                .then(function(response) {
+                    UserService.setCurrentUser(response.data);
+                    $scope.message = "Profile Successfully Updated";
+                    $location.url('/profile');
+                });
         }
 
     }

@@ -1,34 +1,30 @@
 module.exports = function(app, userModel) {
-    app.post("/api/assignment/user", createUser);
-    app.get("/api/assignment/user", findAllUsers);
-    app.get("/api/assignment/user/:id", findUserById);
-    app.get("/api/assignment/user?username=username", findUserByUsername);
-    app.get("/api/assignment/user?username=:username&password=:password", findUserByCredentials);
-    app.put("/api/assignment/user/:id", updateUserById);
-    app.delete("/api/assignment/user/:id", deleteUserById);
-    app.post("/api/assignment/login", login);
+    app.post("/api/project/user", createUser);
+    app.get("/api/project/user", findAllUsers);
+    app.get("/api/project/user/members", findAllMembers);
+    app.get("/api/project/user/:id", findUserById);
+    app.get("/api/project/user?username=:username&password=:password", findUserByCredentials);
+    app.put("/api/project/user/:id", updateUserById);
+    app.delete("/api/project/user/:id", deleteUserById);
+    app.post("/api/project/login", login);
 
     function createUser(req, res) {
         var user = req.body;
         user = userModel.createUser(user);
         res.json(user);
-        //Not returning all the users, since after login, we need the newly created user as the currentUser on client side
-        //res.json(userModel.findAllUsers());
     }
 
     function findAllUsers(req, res) {
         res.json(userModel.findAllUsers());
     }
 
+    function findAllMembers(req, res) {
+        res.json(userModel.findAllMembers())
+    }
+
     function findUserById(req, res) {
         var userId = req.params.id;
         var user = userModel.findUserById(userId);
-        res.json(user);
-    }
-
-    function findUserByUsername(req, res) {
-        var username = req.params.username;
-        var user = userModel.findUserByUsername(username);
         res.json(user);
     }
 
@@ -52,6 +48,7 @@ module.exports = function(app, userModel) {
 
     function deleteUserById(req, res) {
         var userId = req.params.id;
+        console.log(userId);
         var user = userModel.deleteUserById(userId);
         res.json(userModel.findAllUsers());
     }
@@ -62,4 +59,4 @@ module.exports = function(app, userModel) {
         res.json(currentUser);
     }
 
-};
+}

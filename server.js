@@ -26,7 +26,7 @@ app.get('/assignment/client', cors(), function(req, res){
 });
 
 app.get('/project', cors(), function(req, res){
-    res.sendfile('/project/index.html');
+    res.sendfile('/project/client/index.html');
 });
 
 app.get('/getNews', getNews);
@@ -59,6 +59,7 @@ function getNews(req, res) {
 }
 
 require('./public/assignment/server/app.js')(app);
+require('./public/project/server/app.js')(app);
 
 
 //Connection configuration for local and openshift

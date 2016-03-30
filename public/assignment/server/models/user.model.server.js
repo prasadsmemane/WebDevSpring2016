@@ -69,7 +69,7 @@ module.exports = function() {
     function deleteUserById(userId) {
         for(var user in users){
             if(users[user]._id == userId){
-                users[user].splice(user,1);
+                users.splice(user,1);
                 return;
             }
         }
