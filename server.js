@@ -29,35 +29,6 @@ app.get('/project', cors(), function(req, res){
     res.sendfile('/project/client/index.html');
 });
 
-app.get('/getNews', getNews);
-
-function getNews(req, res) {
-    var options = {
-        method: 'GET',
-        host: "api.fantasydata.net",
-        path: "/nfl/v2/JSON/News",
-        headers: {
-            "Ocp-Apim-Subscription-Key": "f10779725e0a4d42a3928e0c3155f442"
-        }
-    }
-
-    var req = https.request(options, function(response) {
-        var data = '';
-        response.on('uncaughtException', function(err) {
-            console.log(err);
-        });
-        response.on('data', function(chunk) {
-            data += chunk;
-        });
-        response.on('end', function() {
-            var dataToBeSent = JSON.parse(data);
-            // send the data back to the angular service
-            res.send(dataToBeSent);
-        });
-    });
-    req.end();
-}
-
 require('./public/assignment/server/app.js')(app);
 require('./public/project/server/app.js')(app);
 

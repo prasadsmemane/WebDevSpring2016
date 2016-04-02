@@ -11,11 +11,11 @@
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
-
+        <li ng-class="{active:isActive('/search')}"><a href="#/search">Search</a></li>
         <li ng-class="{active:isActive('/register')}"><a ng-show="!currentUser" href="#/register">Register</a></li>
         <li ng-class="{active:isActive('/login')}"><a ng-show="!currentUser" href="#/login">Login</a></li>
         <li class="dropdown">
-            <a ng-show="currentUser" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{currentUser.username}} <b class="caret"></b></a>
+            <a ng-show="currentUser" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{currentUser.username}} <b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li>
                     <a href="#/profile"><i class="fa fa-fw fa-user"></i> Profile</a>

@@ -2,9 +2,9 @@
     "use strict";
     angular
         .module("SportsBarApp")
-        .factory("SportsService", FormService);
+        .factory("SportsService", SportsService);
 
-    function FormService($http) {
+    function SportsService($http) {
         var service = {
             createNewSport: createNewSport,
             findAllSports: findAllSports,

@@ -1,8 +1,6 @@
 (function () {
     "use strict";
 
-    var NEWS_URL = "https://api.fantasydata.net/nfl/v2/JSON/News";
-
     angular
         .module("SportsBarApp")
         .controller("HomeController", HomeController)
@@ -11,12 +9,11 @@
 
         init();
         function init() {
-            FantasyDataService.getRecentNews(renderNews)
+            FantasyDataService.getRecentNews()
+                .success(function(response) {
+                    $scope.recentNews = response;
+            });
         }
 
-
-        function renderNews(response) {
-            $scope.recentNews = response;
-        }
     }
 }());

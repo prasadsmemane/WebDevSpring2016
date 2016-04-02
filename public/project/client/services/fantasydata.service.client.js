@@ -6,15 +6,18 @@
 
     function FantasyDataService($http) {
         var api = {
-            getRecentNews: getRecentNews
+            getRecentNews: getRecentNews,
+            searchSportsPlayer: searchSportsPlayer
         };
         return api;
 
-        function getRecentNews(callback) {
-            $http.get("/getNews").success(function(response) {
-                callback(response);
-            });
-            callback(null);
+        function getRecentNews() {
+            return $http.get("/api/project/getNews");
+        }
+
+        function searchSportsPlayer(sports, player) {
+            var playerNoSpaces = player.replace(/\s+/g, '');
+            return $http.post("/api/project/search/" + playerNoSpaces, sports);
         }
 
     }
