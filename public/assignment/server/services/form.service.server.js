@@ -9,40 +9,80 @@ module.exports = function(app, formModel) {
     function createFormForUser(req, res) {
         var userId = req.params.userId;
         var form = req.body;
-        var newForm = formModel.createFormForUser(userId, form);
-        res.json(formModel.findAllFormsForUser(userId));
+
+        formModel.createFormForUser(userId, form)
+            .then(
+                function(doc) {
+                    res.send(doc);
+                },
+                function(err) {
+                    res.status(400).send(err);
+            });
     }
 
     function findAllFormsForUser(req, res) {
         var userId = req.params.userId;
-        var forms = formModel.findAllFormsForUser(userId);
-        res.json(forms);
+
+        formModel.findAllFormsForUser(userId)
+            .then(
+                function(doc) {
+                    res.json(doc);
+                },
+                function(err) {
+                    res.status(400).send(err);
+            });
     }
 
     function findFormById(req, res) {
         var formId = req.params.formId;
-        var form = formModel.findFormById(formId);
-        res.json(form);
+
+        formModel.findFormById(formId)
+            .then(
+                function(doc) {
+                    res.json(doc);
+                },
+                function(err) {
+                    res.status(400).send(err);
+            });
     }
 
     function updateFormById(req, res) {
         var formId = req.params.formId;
         var form = req.body;
-        var updatedForm = formModel.updateFormById(formId, form);
-        res.json(formModel.findAllForms());
+
+        formModel.updateFormById(formId, form)
+            .then(function(doc) {
+                res.send(200);
+            }, function(err) {
+                res.status(400).send(err);
+            });
     }
 
     function deleteFormById(req, res) {
         var formId = req.params.formId;
-        var deletedForm = formModel.deleteFormById(formId);
-        res.send(formModel.findAllForms());
+        formModel.deleteFormById(formId)
+            .then(
+                function(doc) {
+                    res.send(200);
+                },
+                function(err) {
+                    res.status(400).send(err);
+            });
+
     }
 
     function findFormByName(req, res) {
         var userId = req.params.userId;
         var formName = req.params.formName;
-        var form = formModel.findFormByNameForUser(userId, formName);
-        res.send(form);
+        formModel.findFormByNameForUser(userId, formName)
+            .then(
+            function(doc) {
+                res.send(doc);
+            },
+            function(err) {
+                res.status(400).send(err);
+            });
+
     }
 
 }

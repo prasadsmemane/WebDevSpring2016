@@ -15,7 +15,9 @@
             findAllUsers: findAllUsers,
 
             setCurrentUser: setCurrentUser,
-            getCurrentUser: getCurrentUser
+            getCurrentUser: getCurrentUser,
+
+            logout: logout
         };
         return service;
 
@@ -61,6 +63,10 @@
                 password: password
             }
             return $http.post("/api/assignment/login", credentials);
+        }
+
+        function logout(){
+            return $http.post("/api/assignments/logout");
         }
 
     }

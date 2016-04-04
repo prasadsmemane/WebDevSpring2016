@@ -13,8 +13,11 @@
         }
 
         function logout(){
-            UserService.setCurrentUser(undefined);
-            $location.url('/home');
+            UserService.logout()
+                .then(function() {
+                    UserService.setCurrentUser(undefined);
+                    $location.url('/home');
+                });
         }
     }
 }());

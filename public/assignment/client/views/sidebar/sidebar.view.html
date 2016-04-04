@@ -11,7 +11,7 @@
             </a>
         </li>
         <li ng-class="{active:isActive('/admin')}">
-            <a ng-show="currentUser && currentUser.roles.indexOf('admin') >= 0" href="#/admin">
+            <a ng-show="currentUser && currentUser.role.indexOf('admin') >= 0" href="#/admin">
                 <span class="glyphicon glyphicon-globe"></span>Admin
             </a>
         </li>

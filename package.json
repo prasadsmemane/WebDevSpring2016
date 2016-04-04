@@ -29,8 +29,12 @@
     "cookie-parser": "^1.4.1",
     "cors": "~2.7.1",
     "express": "^3.4.8",
+    "express-session": "^1.13.0",
+    "mongoose": "^4.4.11",
     "multer": "^1.1.0",
-    "node-uuid": "^1.4.7"
+    "node-uuid": "^1.4.7",
+    "promise": "^7.1.1",
+    "q": "^1.4.1"
   },
   "devDependencies": {},
   "bundleDependencies": [],

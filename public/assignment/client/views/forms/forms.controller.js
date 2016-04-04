@@ -4,8 +4,8 @@
         .module("FormBuilderApp")
         .controller("FormsController", FormsController)
 
-    function FormsController($scope, FormService) {
-        var currentUser = $scope.currentUser;
+    function FormsController($rootScope, $scope, FormService) {
+        var currentUser = $rootScope.currentUser;
         var userId = currentUser._id;
 
         $scope.addForm = addForm;
@@ -32,7 +32,6 @@
                 alert("Please enter a form title");
                 return;
             }
-
 
             FormService.createFormForUser(userId, form)
                 .then(function(response) {

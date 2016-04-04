@@ -13,8 +13,6 @@
                 .then(function(response) {
                     if(response.data !== "null") {
                         UserService.setCurrentUser(response.data);
-                        console.log("Logged In as");
-                        console.log($rootScope.currentUser);
                         $location.url("/profile");
                     }
                     else {

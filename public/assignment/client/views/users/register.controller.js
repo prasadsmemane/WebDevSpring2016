@@ -26,6 +26,10 @@
                 return;
             }
 
+            var emails = [];
+            emails.push(user.email);
+            user.emails = emails;
+
             UserService.createUser(user)
                 .then(function(response) {
                     UserService.setCurrentUser(response.data);
