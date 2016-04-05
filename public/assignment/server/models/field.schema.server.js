@@ -10,6 +10,7 @@ module.exports = function(mongoose) {
         options: [{
             label: String,
             value: String
+
         }]
     }, {collection: 'field'});
 

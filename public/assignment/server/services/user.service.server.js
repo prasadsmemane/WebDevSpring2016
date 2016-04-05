@@ -101,7 +101,7 @@ module.exports = function(app, userModel) {
     function deleteUserById(req, res) {
         var userId = req.params.id;
 
-        userModel.deleteUser(userId)
+        userModel.deleteUserById(userId)
             .then(
                 function(doc) {
                     res.json(doc);

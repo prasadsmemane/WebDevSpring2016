@@ -2,6 +2,10 @@
     <h1 class="page-header">Admin</h1>
     <h2>Users</h2>
     <br>
+
+    <div ng-show="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+    <div ng-show="message" class="alert alert-success">{{message}}</div>
+
     <div class="table-responsive">
         <table class="table table-striped">
             <thead class="table-header">
@@ -11,46 +15,31 @@
                 <td><span class="glyphicon glyphicon-triangle-bottom"></span> Role</td>
                 <td><span class="glyphicon glyphicon-triangle-bottom"></span> Action</td>
             </tr>
+
             <tr>
-                <td><input type="text" id="username" placeholder="Username"></td>
-                <td><input type="password" id="pwd" placeholder="Password"></td>
-                <td><input type="text" id="role" placeholder="Role1, Role2"></td>
+                <td><input ng-model="user.username" type="text" class="form-control" id="username" placeholder="Username"></td>
+                <td><input ng-model="user.password" type="password" class="form-control" id="pwd" placeholder="Password"></td>
+                <td><input ng-model="user.role" type="text" class="form-control" id="role" placeholder="Role"></td>
                 <td>
-                    <a href="#"><span class="glyphicon glyphicon-plus forms-plus"></span></a>
-                    <a href="#"><span class="glyphicon glyphicon-ok forms-ok"></span></a>
+                    <a ng-click="addUser()"><span class="glyphicon glyphicon-plus btn btn-primary"></span></a>
+                    <a ng-click="updateUser()"><span class="glyphicon glyphicon-ok btn btn-success"></span></a>
                 </td>
             </tr>
             </thead>
+
             <tbody class="table-body">
-            <tr>
-                <td>Alice</td>
-                <td></td>
-                <td>Student</td>
+            <tr ng-repeat="user in users" ng-class="{selected: $index==selectedIndex}">
+                <td>{{user.username}}</td>
+                <td>*****</td>
+                <td>{{user.role}}</td>
                 <td>
-                    <a href="#"><span class="glyphicon glyphicon-remove forms-remove"></span></a>
-                    <a href="#"><span class="glyphicon glyphicon-pencil forms-pencil"></span></a>
-                </td>
-            </tr>
-            <tr>
-                <td>Bob</td>
-                <td></td>
-                <td>Faculty | Admin</td>
-                <td>
-                    <a href="#"><span class="glyphicon glyphicon-remove forms-remove"></span></a>
-                    <a href="#"><span class="glyphicon glyphicon-pencil forms-pencil"></span></a>
-                </td>
-            </tr>
-            <tr>
-                <td>Charlie</td>
-                <td></td>
-                <td></td>
-                <td>
-                    <a href="#"><span class="glyphicon glyphicon-remove forms-remove"></span></a>
-                    <a href="#"><span class="glyphicon glyphicon-pencil forms-pencil"></span></a>
+                    <span ng-click="deleteUser($index)" class="glyphicon glyphicon-remove btn btn-danger"></span>
+                    <span ng-click="selectUser($index)" class="glyphicon glyphicon-pencil btn btn-warning"></span>
                 </td>
             </tr>
             </tbody>
 
         </table>
     </div>
+
 </div>

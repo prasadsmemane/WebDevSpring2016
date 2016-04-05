@@ -24,12 +24,12 @@
         }
 
         function init() {
-            FieldService.getFieldsForForm(formId).then(function(response) {
-                x.fields = response.data;
-            });
-
             FormService.findFormById(formId).then(function(response) {
                 x.form = response.data;
+            });
+
+            FieldService.getFieldsForForm(formId).then(function(response) {
+                x.fields = response.data;
             });
         }
 
@@ -37,19 +37,30 @@
 
         function addSameField(field) {
             FieldService.createFieldForForm(formId, field)
-                .then(init());
+                .then(
+                    function(response) {
+                        init();
+                    }
+                );
         }
 
         function deleteField(fieldId) {
             FieldService.deleteFieldFromForm(formId, fieldId)
-                .then(init());
+                .then(
+                    function(response) {
+                        init();
+                    }
+                );
         }
-
 
         function reOrderField() {
             x.form.fields = x.fields;
             FormService.updateFormById(formId, x.form)
-                .then(init());
+                .then(
+                    function(response) {
+                        init();
+                    }
+                );
         }
 
         function addField(fieldType) {
@@ -59,7 +70,11 @@
             }
             var field = getCorrespondingField(fieldType);
             FieldService.createFieldForForm(formId, field)
-                .then(init());
+                .then(
+                    function(response) {
+                        init();
+                    }
+                );
         }
 
         function getCorrespondingField(fieldType) {
@@ -141,7 +156,11 @@
             }
 
             FieldService.updateField(formId, x.editedField._id, x.editedField)
-                .then(init());
+                .then(
+                    function(response) {
+                        init();
+                    }
+                );
         }
 
     }

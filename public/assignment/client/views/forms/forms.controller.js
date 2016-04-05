@@ -29,12 +29,13 @@
             var formName = form.title;
 
             if(angular.isUndefined(formName)|| formName.trim() === "" || formName === null) {
-                alert("Please enter a form title");
+                $scope.errorMessage = "Please enter a form title";
                 return;
             }
 
             FormService.createFormForUser(userId, form)
                 .then(function(response) {
+                    $scope.message = "Form created successfully";
                     viewFormsForCurrentUser();
                 });
         }
@@ -43,22 +44,23 @@
             var selectedForm = $scope.selectedForm;
             var changeForm = $scope.form;
 
-            if(angular.equals(selectedForm, changeForm)) {
-                alert("Please don't use the same form title");
+            if(angular.equals(selectedForm.title, changeForm.title)) {
+                $scope.errorMessage = "Please don't use the same form title";
                 return;
             }
 
             var formName = changeForm.title;
 
             if(angular.isUndefined(formName)|| formName.trim() === "" || formName === null) {
-                alert("Please enter a form title");
+                $scope.errorMessage = "Please enter a form title";
                 return;
             }
 
             FormService.updateFormById(changeForm._id, changeForm)
                 .then(function() {
-                viewFormsForCurrentUser();
-            });
+                    $scope.message = "Form updated successfully";
+                    viewFormsForCurrentUser();
+                });
         }
 
         function selectForm(index) {
