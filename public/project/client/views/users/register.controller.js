@@ -48,7 +48,7 @@
                 return;
             }
 
-            if($scope.user.sports.length === 0) {
+            if($scope.selection.length === 0) {
                 $scope.errorMessage = "Please select at least one favourite sports";
                 return;
             }
