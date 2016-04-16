@@ -1,8 +1,8 @@
-module.exports = function(app) {
-    var sportsModel = require("./models/sports.model.server.js")();
+module.exports = function(app, db, mongoose) {
+    var sportsModel = require("./models/sports.model.server.js")(db, mongoose);
     var sportsService  = require("./services/sports.service.server.js")(app, sportsModel);
 
-    var userModel = require("./models/user.model.server.js")();
+    var userModel = require("./models/user.model.server.js")(db, mongoose);
     var userService  = require("./services/user.service.server.js")(app, userModel);
 
     var https = require('https');

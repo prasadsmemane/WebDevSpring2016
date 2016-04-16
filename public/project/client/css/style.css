@@ -1,6 +1,6 @@
 body {
     margin-top: 100px;
-    background-color: #222;
+    background-color: dimgrey;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 400;
 }
@@ -287,4 +287,17 @@ ul.alert-dropdown {
 
 .fa-glass {
     color: orange;
+}
+
+a {
+    -webkit-transition: .25s all;
+    transition: .25s all;
+}
+
+
+.card {
+    margin: 5px;
+    padding: 5px;
+    border: solid;
+    border-color: orange;
 }
