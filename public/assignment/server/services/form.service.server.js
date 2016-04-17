@@ -50,6 +50,8 @@ module.exports = function(app, formModel) {
         var formId = req.params.formId;
         var form = req.body;
 
+        delete form._id;
+
         formModel.updateFormById(formId, form)
             .then(function(doc) {
                 res.send(200);

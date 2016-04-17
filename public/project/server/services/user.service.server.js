@@ -84,6 +84,8 @@ module.exports = function(app, userModel) {
         var userId = req.params.id;
         var user = req.body;
 
+        delete user._id;
+
         userModel.updateUser(userId, user)
             .then(
                 function(doc) {
