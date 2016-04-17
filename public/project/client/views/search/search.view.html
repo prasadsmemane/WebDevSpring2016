@@ -16,7 +16,7 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="pwd">Search Player:</label>
                 <div class="col-sm-4">
-                    <input ng-model="searchPlayer" type="text" class="form-control" id="pwd" placeholder="Sports Team">
+                    <input ng-model="searchPlayer" type="text" class="form-control" id="pwd" placeholder="Player Name">
                 </div>
             </div>
             <div class="form-group">
@@ -28,41 +28,16 @@
             </div>
         </form>
 
-
-
-        <div class="table-responsive table-striped">
-
-
-            <div ng-repeat-start="news in sportsTeamNews">
-                <span ng-class-odd="'odd'" ng-class-even="'even'">
-            <div class="card card-block">
-                <h4 class="card-title">{{news.Title}}</h4>
-                <p class="card-text">Content: {{news.Content}}</p>
-                <a href="{{news.Url}}" class="card-link">Read More..</a>
-            </div>
-                </span>
-            </div>
-            <div ng-repeat-end></div>
-
-            <!--
-            <table class="table table-borderless">
-                <tbody class="table-body news-card">
-                <tr ng-repeat-start="news in sportsTeamNews">
-                <tr>
-                    <td>Title: {{news.Title}}</td>
-                </tr>
-                <tr>
-                    <td>Content: {{news.Content}}</td>
-                </tr>
-                <tr>
-                    <td>URL: <a href="{{news.Url}}">Read More..</a></td>
-                </tr>
-                <tr ng-repeat-end>
-                </tbody>
-            </table>
-            -->
-
+        <div ng-repeat-start="news in sportsTeamNews">
+            <span ng-class-odd="'odd'" ng-class-even="'even'">
+                <div class="card card-block">
+                    <h4 class="card-title">{{news.Title}}</h4>
+                    <p class="card-text">Content: {{news.Content}}</p>
+                    <a href="{{news.Url}}" class="card-link">Read More..</a>
+                </div>
+            </span>
         </div>
+        <div ng-repeat-end></div>
 
     </div>
 </div>

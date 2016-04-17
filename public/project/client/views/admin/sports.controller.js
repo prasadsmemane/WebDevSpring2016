@@ -4,7 +4,7 @@
         .module("SportsBarApp")
         .controller("SportsController", SportsController)
 
-    function SportsController($scope, $rootScope, SportsService, UserService) {
+    function SportsController($scope, $rootScope, SportsService) {
         var currentUser = $rootScope.currentUser;
 
         $scope.deleteSport = deleteSport;
@@ -16,6 +16,7 @@
         function viewAllSports() {
             SportsService.findAllSports()
                 .then(function (response) {
+                    console.log(response);
                     setSports(response);
                 });
         }
@@ -24,14 +25,14 @@
             var sportId = $scope.sports[index]._id;
             SportsService.deleteSportById(sportId)
                 .then(function(response) {
-                    setSports(response)
+                    viewAllSports();
                 });
         }
 
         function addSport() {
             SportsService.createNewSport($scope.newSport)
                 .then(function(response) {
-                    setSports(response);
+                    viewAllSports();
                 });
         }
 

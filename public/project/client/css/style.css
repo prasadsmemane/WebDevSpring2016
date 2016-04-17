@@ -301,3 +301,7 @@ a {
     border: solid;
     border-color: orange;
 }
+
+.card-title {
+    color: darkred;
+}

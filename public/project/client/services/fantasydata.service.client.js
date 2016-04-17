@@ -12,7 +12,7 @@
         return api;
 
         function getRecentNews() {
-            return $http.get("/api/project/getNews");
+            return $http.get("/api/project/NFL/getNews");
         }
 
         function searchSportsPlayer(sports, player) {

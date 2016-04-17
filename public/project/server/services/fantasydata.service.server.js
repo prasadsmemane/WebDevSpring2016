@@ -1,18 +1,34 @@
-module.exports = function(app, https) {
-    app.get("/api/project/getNews", getNews);
+module.exports = function(app, sportsModel, https) {
+    app.get("/api/project/:sports/getNews", getSportsNews);
     app.post("/api/project/search/:player", searchSportsPlayer);
 
     var API = "api.fantasydata.net";
 
-    function getNews(req, res) {
+    function getSportsNews(req, res) {
+        var sportsName = req.params.sports;
+
+        sportsModel.findSportsByName(sportsName)
+            .then(
+            function(doc) {
+                getNews(doc[0], res);
+            },
+            function(err) {
+                res.status(400).send(err);
+            }
+        );
+
+
+    }
+
+    function getNews(sports, res) {
         var PATH = "/v2/JSON/News";
 
         var options = {
             method: 'GET',
             host: API,
-            path: "/" + "NFL" + PATH,
+            path: "/" + sports.name + PATH,
             headers: {
-                "Ocp-Apim-Subscription-Key": "f10779725e0a4d42a3928e0c3155f442"
+                "Ocp-Apim-Subscription-Key": sports.key
             }
         };
 
@@ -38,8 +54,6 @@ module.exports = function(app, https) {
 
         var player = req.params.player;
         var sports = req.body;
-
-
 
         var options = {
             method: 'GET',

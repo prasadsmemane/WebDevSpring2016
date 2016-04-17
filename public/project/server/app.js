@@ -6,5 +6,5 @@ module.exports = function(app, db, mongoose) {
     var userService  = require("./services/user.service.server.js")(app, userModel);
 
     var https = require('https');
-    var fantasyDataService = require("./services/fantasydata.service.server.js")(app, https);
+    var fantasyDataService = require("./services/fantasydata.service.server.js")(app, sportsModel, https);
 }

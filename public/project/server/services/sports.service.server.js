@@ -4,19 +4,43 @@ module.exports = function(app, sportsModel) {
     app.delete("/api/project/sports/:id", deleteSportById);
 
     function createNewSports(req, res) {
-        var sports = req.body;
-        sports = sportsModel.createNewSports(sports);
-        res.json(sportsModel.findAllSports());
+        var sport = req.body;
+
+        sportsModel.createNewSports(sport)
+            .then(
+                function(doc) {
+                    res.json(doc);
+                },
+                function(err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function findAllSports(req, res) {
-        res.json(sportsModel.findAllSports());
+        sportsModel.findAllSports()
+            .then(
+                function(doc) {
+                    res.json(doc);
+                },
+                function(err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function deleteSportById(req, res) {
         var sportsId = req.params.id;
-        var sports = sportsModel.deleteSportById(sportsId);
-        res.json(sportsModel.findAllSports());
+
+        sportsModel.deleteSportById(sportsId)
+            .then(
+                function(doc) {
+                    res.json(doc);
+                },
+                function(err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
 
