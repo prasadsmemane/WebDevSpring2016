@@ -29,13 +29,11 @@
         </form>
 
         <div ng-repeat-start="news in sportsTeamNews">
-            <span ng-class-odd="'odd'" ng-class-even="'even'">
-                <div class="card card-block">
-                    <h4 class="card-title">{{news.Title}}</h4>
-                    <p class="card-text">Content: {{news.Content}}</p>
-                    <a href="{{news.Url}}" class="card-link">Read More..</a>
-                </div>
-            </span>
+            <div class="card card-block">
+                <h4 class="card-title">{{news.Title}}</h4>
+                <p class="card-text">Content: {{news.Content}}</p>
+                <a href="{{news.Url}}" class="card-link">Read More..</a>
+            </div>
         </div>
         <div ng-repeat-end></div>
 

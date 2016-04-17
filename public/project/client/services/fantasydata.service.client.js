@@ -6,10 +6,15 @@
 
     function FantasyDataService($http) {
         var api = {
+            getAllNews: getAllNews,
             getRecentNews: getRecentNews,
             searchSportsPlayer: searchSportsPlayer
         };
         return api;
+
+        function getAllNews() {
+            return $http.get("/api/project/getAllNews");
+        }
 
         function getRecentNews() {
             return $http.get("/api/project/NFL/getNews");

@@ -1,8 +1,60 @@
+var async = require('async');
+
 module.exports = function(app, sportsModel, https) {
     app.get("/api/project/:sports/getNews", getSportsNews);
+    app.get("/api/project/getAllNews", getAllNews);
     app.post("/api/project/search/:player", searchSportsPlayer);
 
     var API = "api.fantasydata.net";
+
+    function getAllNews(req, res) {
+        sportsModel.findAllSports()
+            .then(
+                function (doc) {
+                    getNewsFromCol(doc, res);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
+    }
+
+    function getNewsFromCol(sports, res) {
+        async.map(sports, function(item, callback) {
+            var PATH = "/v2/JSON/News";
+
+            var options = {
+                method: 'GET',
+                host: API,
+                path: "/" + item.name + PATH,
+                headers: {
+                    "Ocp-Apim-Subscription-Key": item.key
+                }
+            };
+
+            var request = https.request(options, function(response) {
+                var data = '';
+                response.on('uncaughtException', function(err) {
+                    console.log(err);
+                });
+                response.on('data', function(chunk) {
+                    data += chunk;
+                });
+                response.on('end', function() {
+                    var dataToBeSent = JSON.parse(data);
+                    // send the data back to the angular service
+                    callback(null, dataToBeSent);
+                });
+            });
+            request.end();
+        }, function(err, result) {
+            if (err) {
+                console.error(err.message);
+            }
+            res.send(result);
+        })
+
+    }
 
     function getSportsNews(req, res) {
         var sportsName = req.params.sports;

@@ -6,13 +6,12 @@
         </h1>
 
         <div ng-repeat-start="news in recentNews">
-            <span ng-class-odd="'odd'" ng-class-even="'even'">
-                <div class="card card-block">
-                    <h4 class="card-title">{{news.Title}}</h4>
-                    <p class="card-text">Content: {{news.Content}}</p>
-                    <a href="{{news.Url}}" class="card-link">Read More..</a>
-                </div>
-            </span>
+            <div class="card card-block">
+                <h4 class="card-title">{{news.Title}}</h4>
+                <p class="card-text">Content: {{news.Content}}</p>
+                <a href="{{news.Url}}" class="btn btn-info">Read More..</a>
+                <button ng-click="like()" type="submit" class="btn btn-success">Like</button>
+            </div>
         </div>
         <div ng-repeat-end></div>
 

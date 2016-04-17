@@ -5,14 +5,21 @@
         .module("SportsBarApp")
         .controller("HomeController", HomeController)
 
-    function HomeController($scope, FantasyDataService) {
+    function HomeController($scope, FantasyDataService, $rootScope) {
 
         init();
         function init() {
-            FantasyDataService.getRecentNews()
-                .success(function(response) {
-                    $scope.recentNews = response;
-            });
+
+            if($rootScope.currentUser == undefined) {
+                FantasyDataService.getAllNews()
+                    .success(function (response) {
+                        var recentNews = [];
+                        for (var i in response) {
+                            recentNews = recentNews.concat(response[i]);
+                        }
+                        $scope.recentNews = recentNews;
+                    });
+            }
         }
 
     }
