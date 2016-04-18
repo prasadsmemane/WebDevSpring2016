@@ -5,6 +5,7 @@
             <li ng-class="{active:isActive('/profile')}"><a ng-show="currentUser" href="#/profile"><i class="fa fa-user"></i>Profile</a></li>
             <li ng-class="{active:isActive('/users')}"><a ng-show="isAdmin()" href="#/users"><i class="fa fa-users"></i>Manage Members</a></li>
             <li ng-class="{active:isActive('/sports')}"><a ng-show="isAdmin()" href="#/sports"><i class="fa fa-futbol-o"></i>Manage Sports</a></li>
+            <li ng-class="{active:isActive('/favNews')}"><a ng-show="currentUser" href="#/favNews"><i class="fa fa-thumbs-o-up"></i>Favourite News</a></li>
         </ul>
     </div>
 </div>

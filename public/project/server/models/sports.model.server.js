@@ -61,7 +61,7 @@ module.exports = function(db, mongoose) {
     function findSportsByName(sportName) {
         var deferred = q.defer();
 
-        SportsModel.find({name: sportName},
+        SportsModel.find({name: { $in: sportName}},
             function(err, res) {
                 if (err) {
                     deferred.reject(err);

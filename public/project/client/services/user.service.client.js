@@ -16,7 +16,11 @@
 
             setCurrentUser: setCurrentUser,
             findUserByCredentials: findUserByCredentials,
-            loginUserByCredentials: loginUserByCredentials
+            loginUserByCredentials: loginUserByCredentials,
+
+            addFavouriteNews: addFavouriteNews,
+            getFavNewsForUser: getFavNewsForUser,
+            findUsersWithSameTaste: findUsersWithSameTaste
         };
         return model;
 
@@ -61,12 +65,24 @@
             var credentials = {
                 username: username,
                 password: password
-            }
+            };
             return $http.post("/api/project/login", credentials);
         }
 
         function findAllMembers() {
             return $http.get("/api/project/user/members");
+        }
+
+        function addFavouriteNews(userId, favNews) {
+            return $http.post("/api/project/user/" + userId + "/news", favNews);
+        }
+
+        function getFavNewsForUser(userId) {
+            return $http.get("/api/project/user/" + userId + "/news");
+        }
+
+        function findUsersWithSameTaste(userId, news) {
+            return $http.post("/api/project/user/" + userId + "/taste", news);
         }
 
     }

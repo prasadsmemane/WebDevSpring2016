@@ -7,7 +7,7 @@
     function FantasyDataService($http) {
         var api = {
             getAllNews: getAllNews,
-            getRecentNews: getRecentNews,
+            getAllNewsForUser: getAllNewsForUser,
             searchSportsPlayer: searchSportsPlayer
         };
         return api;
@@ -16,8 +16,8 @@
             return $http.get("/api/project/getAllNews");
         }
 
-        function getRecentNews() {
-            return $http.get("/api/project/NFL/getNews");
+        function getAllNewsForUser(userId) {
+            return $http.get("/api/project/" + userId + "/getAllNews");
         }
 
         function searchSportsPlayer(sports, player) {

@@ -1,9 +1,10 @@
 var async = require('async');
 
-module.exports = function(app, sportsModel, https) {
+module.exports = function(app, userModel, sportsModel, https) {
     app.get("/api/project/:sports/getNews", getSportsNews);
     app.get("/api/project/getAllNews", getAllNews);
     app.post("/api/project/search/:player", searchSportsPlayer);
+    app.get("/api/project/:userId/getAllNews", getAllNewsForUser);
 
     var API = "api.fantasydata.net";
 
@@ -12,6 +13,28 @@ module.exports = function(app, sportsModel, https) {
             .then(
                 function (doc) {
                     getNewsFromCol(doc, res);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
+    }
+
+    function getAllNewsForUser(req, res) {
+        var userId = req.params.userId;
+
+        userModel.findSportsForUser(userId)
+            .then(
+                function(doc) {
+                    sportsModel.findSportsByName(doc)
+                        .then(
+                            function(doc) {
+                                getNewsFromCol(doc, res);
+                            },
+                            function(err) {
+                                res.status(400).send(err);
+                            }
+                        );
                 },
                 function (err) {
                     res.status(400).send(err);

@@ -5,12 +5,17 @@
             Recent News!
         </h1>
 
+        <div ng-show="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+
         <div ng-repeat-start="news in recentNews">
             <div class="card card-block">
                 <h4 class="card-title">{{news.Title}}</h4>
                 <p class="card-text">Content: {{news.Content}}</p>
                 <a href="{{news.Url}}" class="btn btn-info">Read More..</a>
-                <button ng-click="like()" type="submit" class="btn btn-success">Like</button>
+                <button ng-click="like($index)" ng-disabled="news.isDisabled" type="submit" class="btn btn-success">
+                    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>Like</button>
+                <button ng-click="otherMembers($index)" type="submit" class="btn btn-primary">
+                    <i class="fa fa-users" aria-hidden="true"></i>Same Taste</button>
             </div>
         </div>
         <div ng-repeat-end></div>

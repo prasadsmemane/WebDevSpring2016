@@ -22,6 +22,10 @@
                 templateUrl: "views/users/profile.view.html",
                 controller: "ProfileController"
             })
+            .when("/favNews", {
+                templateUrl: "views/users/favNews.view.html",
+                controller: "FavNewsController"
+            })
             .when("/users", {
                 templateUrl: "views/admin/users.view.html",
                 controller: "UsersController"
@@ -33,6 +37,14 @@
             .when("/search", {
                 templateUrl: "views/search/search.view.html",
                 controller: "SearchController"
+            })
+            .when("/sameTaste", {
+                templateUrl: "views/users/sameTaste.view.html",
+                controller: "SameTasteController"
+            })
+            .when("/otherNews", {
+                templateUrl: "views/users/otherNews.view.html",
+                controller: "OtherNewsController"
             })
             .otherwise({
                 redirectTo: "/home"

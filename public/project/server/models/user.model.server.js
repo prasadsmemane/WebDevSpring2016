@@ -12,6 +12,7 @@ module.exports = function(db, mongoose) {
         findUserById: findUserById,
         deleteUserById: deleteUserById,
         findAllUsers: findAllUsers,
+        findSportsForUser: findSportsForUser,
         findAllMembers: findAllMembers,
         findUserByCredentials: findUserByCredentials
     };
@@ -28,6 +29,21 @@ module.exports = function(db, mongoose) {
                 deferred.resolve(doc);
             }
 
+        });
+
+        return deferred.promise;
+    }
+
+    function findSportsForUser(userId) {
+        var deferred = q.defer();
+
+        UserModel.findById(userId, function (err, doc) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                var sports = doc.sports
+                deferred.resolve(sports);
+            }
         });
 
         return deferred.promise;
