@@ -4,7 +4,6 @@ var https = require('https');
 var multer = require('multer');
 var bodyParser = require('body-parser');
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
 var cookieParser = require('cookie-parser');
 var uuid = require('node-uuid');
 var session = require('express-session');
@@ -33,12 +32,12 @@ app.use(multer());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(passport.initialize());
-app.use(passport.session());
 app.use(session({
-    secret: "session",
+    secret: process.env.PASSPORT_SECRET || "My Secret",
     resave: true,
     saveUninitialized: true}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(public_folder));
 
 app.options('*', cors());

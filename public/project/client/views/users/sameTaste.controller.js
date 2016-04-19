@@ -4,18 +4,21 @@
         .module("SportsBarApp")
         .controller("SameTasteController", SameTasteController)
 
-    function SameTasteController($scope, $rootScope, $location) {
-        $scope.newsTheyLike = newsTheyLike;
-        $scope.message = message;
+    function SameTasteController($rootScope, $location) {
+        var vm = this;
+        vm.newsTheyLike = newsTheyLike;
 
-        function newsTheyLike(index) {
-            $rootScope.sameTasteUser = $rootScope.sameTasteUsers[index];
+        function init() {
+            vm.tasteNews = $rootScope.tasteNews;
+            vm.sameTasteUsers = $rootScope.sameTasteUsers;
+        }
+        init();
+
+        function newsTheyLike(user) {
+            $rootScope.sameTasteUser = user;
             $location.url("/otherNews");
         }
 
-        function message(index) {
-            var messageUSer = $rootScope
-        }
     }
 
 }());

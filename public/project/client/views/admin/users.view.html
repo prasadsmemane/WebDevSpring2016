@@ -3,10 +3,10 @@
     <h1 class="page-header">Manage Members</h1>
     <br>
 
-        <div ng-show="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
-        <div ng-show="message" class="alert alert-success">{{message}}</div>
+        <div ng-show="model.errorMessage" class="alert alert-danger">{{model.errorMessage}}</div>
+        <div ng-show="model.message" class="alert alert-success">{{model.message}}</div>
 
-    <div class="table-responsive col-sm-offset-1">
+    <div class="table-responsive">
         <table class="table">
             <thead class="table-header">
             <tr>
@@ -14,20 +14,20 @@
                 <td><i class="fa fa-chevron-down"></i> Action</td>
             </tr>
             <tr>
-                <td><input ng-model="user.username" type="text" class="form-control" id="username" placeholder="Username" readonly></td>
-                <td><input ng-model="user.email" type="text" class="form-control" id="email" placeholder="Email Address"></td>
+                <td><input ng-model="model.selectUser.username" type="text" class="form-control" id="username" placeholder="Username" readonly></td>
+                <td><input ng-model="model.selectUser.email" type="text" class="form-control" id="email" placeholder="Email Address"></td>
                 <td>
-                    <a ng-click="updateUserEmail()"><i class="fa-crud fa fa-check"></i></a>
+                    <span ng-click="model.updateUserEmail(model.selectUser)" class="glyphicon glyphicon-ok btn btn-success">
                 </td>
             </tr>
             </thead>
             <tbody class="table-body">
-            <tr ng-repeat="user in users" ng-class="{selected: $index==selectedIndex}">
+            <tr ng-repeat="user in model.users" ng-class="{selected: $index==selectedIndex}">
                 <td>{{user.username}}</td>
                 <td>{{user.email}}</td>
                 <td>
-                    <a ng-click="deleteUser($index)"><i class="fa-crud fa fa-times"></i></a>
-                    <a ng-click="selectUser($index)"><i class="fa-crud fa fa-pencil"></i></a>
+                    <span ng-click="model.deleteUser(user)" class="glyphicon glyphicon-remove btn btn-danger"></span>
+                    <span ng-click="model.select(user)" class="glyphicon glyphicon-pencil btn btn-warning"></span>
                 </td>
             </tr>
             </tbody>

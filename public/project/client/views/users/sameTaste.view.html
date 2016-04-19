@@ -5,20 +5,19 @@
         </h1>
 
         <div class="card card-block">
-            <h4 class="card-title">{{tasteNews.Title}}</h4>
-            <p class="card-text">Content: {{tasteNews.Content}}</p>
-            <a href="{{tasteNews.Url}}" class="btn btn-info">Read More..</a>
+            <h4 class="card-title">{{model.tasteNews.Title}}</h4>
+            <p class="card-text">Content: {{model.tasteNews.Content}}</p>
+            <a href="{{model.tasteNews.Url}}" class="btn btn-info">Read More..</a>
         </div>
 
         <hr>
 
-        <div ng-repeat-start="sameTasteUser in sameTasteUsers">
+        <div ng-repeat-start="sameTasteUser in model.sameTasteUsers">
             <div class="card card-block">
                 <h4 class="card-title">Username: {{sameTasteUser.username}}</h4>
-                <button ng-click="newsTheyLike($index)" type="submit" class="btn btn-success">
+                <button ng-click="model.newsTheyLike(sameTasteUser)" type="submit" class="btn btn-success">
                     <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>News they like</button>
-                <button ng-click="message($index)" type="submit" class="btn btn-primary">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>Message</button>
+
             </div>
         </div>
         <div ng-repeat-end></div>

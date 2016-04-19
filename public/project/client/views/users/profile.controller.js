@@ -4,23 +4,26 @@
         .module("SportsBarApp")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController($scope, UserService, SportsService, $location, $rootScope) {
-        var currentUser = $rootScope.currentUser;
+    function ProfileController(UserService, SportsService, $location, $rootScope) {
+        var vm = this;
+        vm.currentUser = $rootScope.currentUser;
+        vm.message = null;
+        vm.errorMessage = null;
 
-        $scope.update = update;
-        $scope.checkCurrentUserSports = checkCurrentUserSports;
-        $scope.toggleSelection = toggleSelection;
-        $scope.selection = [];
+        vm.update = update;
+        vm.checkCurrentUserSports = checkCurrentUserSports;
+        vm.toggleSelection = toggleSelection;
+        vm.selection = [];
 
         SportsService.findAllSports().then(function(response) {
-            $scope.sports = response.data;
-            for (var sport in currentUser.sports) {
-                $scope.selection.push(currentUser.sports[sport]);
+            vm.sports = response.data;
+            for (var sport in vm.currentUser.sports) {
+                vm.selection.push(vm.currentUser.sports[sport]);
             }
         });
 
         function checkCurrentUserSports(sportName) {
-            var selected = $scope.selection;
+            var selected = vm.selection;
             for(var sport in selected) {
                 if(sportName === selected[sport])
                     return true;
@@ -29,47 +32,47 @@
         }
 
         function toggleSelection(sportName) {
-            var idx = $scope.selection.indexOf(sportName);
+            var idx = vm.selection.indexOf(sportName);
 
             // is currently selected
             if (idx > -1) {
-                $scope.selection.splice(idx, 1);
+                vm.selection.splice(idx, 1);
             }
 
             // is newly selected
             else {
-                $scope.selection.push(sportName);
+                vm.selection.push(sportName);
             }
-            console.log($scope.selection);
         }
 
-        function update(){
-            $rootScope.currentUser.sports = $scope.selection;
-            currentUser = $rootScope.currentUser;
+        function update(currentUser){
+            currentUser.sports = vm.selection;
+            vm.message = null;
+            vm.errorMessage = null;
 
             if(angular.isUndefined(currentUser) || !currentUser.username){
-                $scope.errorMessage = "Please provide a username";
+                vm.errorMessage = "Please provide a username";
                 return;
             }
             if(!currentUser.password){
-                $scope.errorMessage = "Please provide a password";
+                vm.errorMessage = "Please provide a password";
                 return;
             }
 
             if(!currentUser.email){
-                $scope.errorMessage = "Please provide an email";
+                vm.errorMessage = "Please provide an email";
                 return;
             }
 
             if(currentUser.sports.length === 0) {
-                $scope.errorMessage = "Please select at least one favourite sports";
+                vm.errorMessage = "Please select at least one favourite sports";
                 return;
             }
 
-            UserService.updateUser($rootScope.currentUser._id, $rootScope.currentUser)
+            UserService.updateUser(currentUser._id, currentUser)
                 .then(function(response) {
                     UserService.setCurrentUser(response.data);
-                    $scope.message = "Profile Successfully Updated";
+                    vm.message = "Profile Successfully Updated";
                     $location.url('/profile');
                 });
         }

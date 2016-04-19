@@ -4,11 +4,13 @@
         .module("SportsBarApp")
         .controller("SportsController", SportsController)
 
-    function SportsController($scope, $rootScope, SportsService) {
+    function SportsController($rootScope, SportsService) {
+        var vm = this;
+
         var currentUser = $rootScope.currentUser;
 
-        $scope.deleteSport = deleteSport;
-        $scope.addSport = addSport;
+        vm.deleteSport = deleteSport;
+        vm.addSport = addSport;
 
         if(currentUser.role === "admin")
             viewAllSports();
@@ -16,29 +18,28 @@
         function viewAllSports() {
             SportsService.findAllSports()
                 .then(function (response) {
-                    console.log(response);
                     setSports(response);
                 });
         }
 
-        function deleteSport(index) {
-            var sportId = $scope.sports[index]._id;
+        function deleteSport(sport) {
+            var sportId = sport._id;
             SportsService.deleteSportById(sportId)
                 .then(function(response) {
                     viewAllSports();
                 });
         }
 
-        function addSport() {
-            SportsService.createNewSport($scope.newSport)
+        function addSport(newSport) {
+            SportsService.createNewSport(newSport)
                 .then(function(response) {
                     viewAllSports();
                 });
         }
 
         function setSports(response) {
-            $scope.newSport = {};
-            $scope.sports = response.data;
+            vm.newSport = {};
+            vm.sports = response.data;
         }
     }
 }());

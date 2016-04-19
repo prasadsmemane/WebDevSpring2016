@@ -5,23 +5,22 @@
         .controller("LoginController", LoginController)
 
     function LoginController($scope, $location, UserService) {
-        $scope.login = login;
+        var vm = this;
+        vm.login = login;
 
-        function login() {
-            UserService.loginUserByCredentials($scope.user.username, $scope.user.password)
+        function login(user) {
+            UserService.loginUserByCredentials(user.username, user.password)
                 .then(function(response) {
-                    if(response.data !== "null") {
                         var user = response.data;
                         UserService.setCurrentUser(user);
-                        if(isAdmin(user))
+                        if (isAdmin(user))
                             $location.url('/admin');
                         else
                             $location.url('/profile');
-                    }
-                    else {
+                    },
+                    function(err) {
                         $scope.errorMessage = "Invalid Credentials";
-                    }
-                });
+                    });
         }
 
         function isAdmin(user) {

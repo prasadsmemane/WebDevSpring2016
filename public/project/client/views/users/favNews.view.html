@@ -2,11 +2,13 @@
     <div class="col-lg-12">
         <h1 class="page-header">News you liked..</h1>
 
-        <div ng-repeat-start="news in favNews">
+        <div ng-repeat-start="news in model.favNews">
             <div class="card card-block">
                 <h4 class="card-title">{{news.title}}</h4>
                 <p class="card-text">Content: {{news.content}}</p>
                 <a href="{{news.url}}" class="btn btn-info">Read More..</a>
+                <button ng-click="model.otherMembers(news)" type="submit" class="btn btn-primary">
+                    <i class="fa fa-users" aria-hidden="true"></i>Same Taste</button>
             </div>
         </div>
         <div ng-repeat-end></div>

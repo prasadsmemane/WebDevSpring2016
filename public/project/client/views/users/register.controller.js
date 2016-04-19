@@ -5,59 +5,64 @@
         .controller("RegisterController", RegisterController)
 
     function RegisterController($scope, UserService, SportsService, $location, $rootScope) {
-        $scope.register = register;
-        $scope.toggleSelection = toggleSelection;
+        var vm = this;
+        vm.errorMessage = null;
+        vm.selection = [];
 
-        $scope.selection = [];
+        vm.register = register;
+        vm.toggleSelection = toggleSelection;
 
         SportsService.findAllSports()
             .then(function(response) {
-            $scope.sports = response.data;
-        });
+                vm.sports = response.data;
+            });
 
         function toggleSelection(sportName) {
-            var idx = $scope.selection.indexOf(sportName);
+            var idx = vm.selection.indexOf(sportName);
 
             // is currently selected
             if (idx > -1) {
-                $scope.selection.splice(idx, 1);
+                vm.selection.splice(idx, 1);
             }
 
             // is newly selected
             else {
-                $scope.selection.push(sportName);
+                vm.selection.push(sportName);
             }
         }
 
-        function register() {
-            var user = $scope.user;
+        function register(user) {
             if(angular.isUndefined(user) || !user.username){
-                $scope.errorMessage = "Please provide a username";
+                vm.errorMessage = "Please provide a username";
                 return;
             }
             if(!user.password || !user.verifypassword){
-                $scope.errorMessage = "Please provide a password";
+                vm.errorMessage = "Please provide a password";
                 return;
             }
             if(user.password !== user.verifypassword){
-                $scope.errorMessage = "Passwords must match";
+                vm.errorMessage = "Passwords must match";
                 return;
             }
             if(!user.email){
-                $scope.errorMessage = "Please provide an email";
+                vm.errorMessage = "Please provide an email";
                 return;
             }
 
-            if($scope.selection.length === 0) {
-                $scope.errorMessage = "Please select at least one favourite sports";
+            if(vm.selection.length === 0) {
+                vm.errorMessage = "Please select at least one favourite sports";
                 return;
             }
 
-            $scope.user.sports = $scope.selection;
+            user.sports = vm.selection;
+            if(user.username != "admin")
+                user.role = "member";
+            else
+                user.role = "admin";
 
-            UserService.createUser(user)
+            UserService.registerUser(user)
                 .then(function(response) {
-                    $rootScope.currentUser = response.data;
+                    UserService.setCurrentUser(response.data);
                     $location.url('/profile');
                 })
         }

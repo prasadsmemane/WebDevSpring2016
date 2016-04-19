@@ -6,9 +6,10 @@
         .controller("HomeController", HomeController)
 
     function HomeController($scope, FantasyDataService, UserService, $rootScope, $location) {
+        var vm = this;
 
-        $scope.like = like;
-        $scope.otherMembers = otherMembers;
+        vm.like = like;
+        vm.otherMembers = otherMembers;
 
         init();
         function init() {
@@ -19,7 +20,7 @@
                         for (var i in response) {
                             recentNews = recentNews.concat(response[i]);
                         }
-                        $scope.recentNews = recentNews;
+                        vm.recentNews = recentNews;
                     });
             }
             else {
@@ -42,39 +43,40 @@
                                 });
                             });
 
-                        $scope.recentNews = recentNews;
+                        vm.recentNews = recentNews;
                     });
             }
         }
 
-        function like(index) {
+        function like(news) {
             if($rootScope.currentUser != undefined) {
                 var favNews = {
-                    title: $scope.recentNews[index].Title,
-                    content: $scope.recentNews[index].Content,
-                    url: $scope.recentNews[index].Url
+                    title: news.Title,
+                    content: news.Content,
+                    url: news.Url
                 };
+
                 UserService.addFavouriteNews($rootScope.currentUser._id, favNews)
                     .success(function(response) {
-                        $scope.recentNews[index].isDisabled = true;
+                        news.isDisabled = true;
                     });
             }
             else {
-                $scope.errorMessage = "Please login to add news to your like bucket.."
+                vm.errorMessage = "Please login to add news to your like bucket.."
             }
         }
 
-        function otherMembers(index) {
-            $rootScope.tasteNews = $scope.recentNews[index];
+        function otherMembers(news) {
+            $rootScope.tasteNews = news;
             if($rootScope.currentUser != undefined) {
-                UserService.findUsersWithSameTaste($rootScope.currentUser._id, $scope.recentNews[index])
+                UserService.findUsersWithSameTaste($rootScope.currentUser._id, news)
                     .success(function(response) {
                         $rootScope.sameTasteUsers = response;
                         $location.url('/sameTaste');
                     });
             }
             else {
-                $scope.errorMessage = "Please login to check who has the same taste.."
+                vm.errorMessage = "Please login to check who has the same taste.."
             }
         }
 

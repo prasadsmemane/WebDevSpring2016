@@ -1,17 +1,14 @@
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Other News that <i>{{sameTasteUser.username}}</i> likes..
-            <div class='btn-toolbar pull-right'>
-                <button ng-click="message()" type="submit" class="btn btn-primary btn-header-msg">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>Message</button>
-            </div>
-        </h1>
+        <h1 class="page-header">Other News that <i>{{model.sameTasteUser.username}}</i> likes..</h1>
 
-        <div ng-repeat-start="news in favNews">
+        <div ng-repeat-start="news in model.favNews">
             <div class="card card-block">
                 <h4 class="card-title">{{news.title}}</h4>
                 <p class="card-text">Content: {{news.content}}</p>
                 <a href="{{news.url}}" class="btn btn-info">Read More..</a>
+                <button ng-click="model.like(news)" ng-disabled="news.isDisabled" type="submit" class="btn btn-success">
+                    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>Like</button>
             </div>
         </div>
         <div ng-repeat-end></div>

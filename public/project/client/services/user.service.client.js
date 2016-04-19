@@ -6,7 +6,7 @@
 
     function UserService($rootScope, $http) {
         var model = {
-            createUser: createUser,
+            registerUser: registerUser,
             updateUser: updateUser,
             deleteUserById: deleteUserById,
 
@@ -17,6 +17,7 @@
             setCurrentUser: setCurrentUser,
             findUserByCredentials: findUserByCredentials,
             loginUserByCredentials: loginUserByCredentials,
+            logout: logout,
 
             addFavouriteNews: addFavouriteNews,
             getFavNewsForUser: getFavNewsForUser,
@@ -30,9 +31,8 @@
         }
 
         //Create a new User
-        function createUser(user) {
-            user.role = "member";
-            return $http.post("/api/project/user", user);
+        function registerUser(user) {
+            return $http.post("/api/project/register", user);
         }
 
         //Update the current user
@@ -67,6 +67,10 @@
                 password: password
             };
             return $http.post("/api/project/login", credentials);
+        }
+
+        function logout() {
+            return $http.post("/api/project/logout");
         }
 
         function findAllMembers() {
