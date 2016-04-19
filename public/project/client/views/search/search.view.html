@@ -22,11 +22,14 @@
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-4">
                     <button ng-click="model.search(model.selectedSports, model.searchPlayer)" type="submit" class="btn btn-primary btn-block btn-default">
-                        Search <i class="fa fa-fw fa-search"></i>
+                        <span ng-show="model.searchButtonText == 'Searching'"><i class="fa fa-spinner fa-spin"></i></span>
+                        {{model.searchButtonText}} <i class="fa fa-fw fa-search"></i>
                     </button>
                 </div>
             </div>
         </form>
+
+        <div ng-show="model.showLoader"><i class="fa fa-spinner fa-spin"></i></div>
 
         <div ng-repeat-start="news in model.sportsTeamNews">
             <div class="card card-block">

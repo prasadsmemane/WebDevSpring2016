@@ -9,6 +9,8 @@
 
         vm.errorMessage = null;
         vm.searchPlayer = null;
+        vm.searchButtonText = "Search";
+        vm.test = false;
 
         vm.search = search;
         vm.like = like;
@@ -27,10 +29,15 @@
             vm.errorMessage = null;
 
             if(player) {
+                vm.searchButtonText = "Searching";
+                vm.test = true;
+
                 if(angular.isUndefined($rootScope.currentUser)) {
                     FantasyDataService.searchSportsPlayer(sport, player)
                         .then(function (response) {
                             vm.sportsTeamNews = response.data;
+                            vm.searchButtonText = "Search";
+                            vm.test = false;
                         });
                 }
                 else {
@@ -49,6 +56,8 @@
                                     });
                                 });
                             vm.sportsTeamNews = response.data;
+                            vm.searchButtonText = "Search";
+                            vm.test = false;
                         });
                 }
             }
