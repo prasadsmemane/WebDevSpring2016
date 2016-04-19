@@ -47,7 +47,7 @@
 
         //Delete user by id
         function deleteUserById(userId) {
-            return $http.delete("/api/project/user/" + userId);
+            return $http.delete("/api/project/admin/" + userId);
         }
 
         //Return all the users
@@ -74,7 +74,7 @@
         }
 
         function findAllMembers() {
-            return $http.get("/api/project/user/members");
+            return $http.get("/api/project/admin/members");
         }
 
         function addFavouriteNews(userId, favNews) {

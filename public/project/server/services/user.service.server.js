@@ -5,8 +5,8 @@ var bcrypt = require("bcrypt-nodejs");
 module.exports = function(app, userModel) {
     var auth = authorized;
 
-    app.delete("/api/project/user/:id", auth, deleteUserById);
-    app.get("/api/project/user/members", auth, findAllMembers);
+    app.delete("/api/project/admin/:id", auth, deleteUserById);
+    app.get("/api/project/admin/members", auth, findAllMembers);
 
     app.post("/api/project/register", register);
     app.get("/api/project/user", findAllUsers);
