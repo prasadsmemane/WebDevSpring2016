@@ -11,7 +11,6 @@
             deleteUserById: deleteUserById,
 
             findUserById: findUserById,
-            findAllUsers: findAllUsers,
             findAllMembers: findAllMembers,
 
             setCurrentUser: setCurrentUser,
@@ -48,11 +47,6 @@
         //Delete user by id
         function deleteUserById(userId) {
             return $http.delete("/api/project/admin/" + userId);
-        }
-
-        //Return all the users
-        function findAllUsers() {
-            return $http.get("/api/project/user");
         }
 
         //Find user by credentials

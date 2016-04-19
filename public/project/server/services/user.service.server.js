@@ -9,7 +9,6 @@ module.exports = function(app, userModel) {
     app.get("/api/project/admin/members", auth, findAllMembers);
 
     app.post("/api/project/register", register);
-    app.get("/api/project/user", findAllUsers);
     app.get("/api/project/user/:id", findUserById);
     app.get("/api/project/user?username=:username&password=:password", findUserByCredentials);
     app.put("/api/project/user/:id", updateUserById);
@@ -67,18 +66,6 @@ module.exports = function(app, userModel) {
                     }
                 },
                 function(err){
-                    res.status(400).send(err);
-                }
-            );
-    }
-
-    function findAllUsers(req, res) {
-        userModel.findAllUsers()
-            .then(
-                function(doc) {
-                    res.json(doc);
-                },
-                function(err) {
                     res.status(400).send(err);
                 }
             );

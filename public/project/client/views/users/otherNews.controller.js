@@ -34,13 +34,7 @@
 
         function like(news) {
             if($rootScope.currentUser != undefined) {
-                var favNews = {
-                    title: news.Title,
-                    content: news.Content,
-                    url: news.Url
-                };
-
-                UserService.addFavouriteNews($rootScope.currentUser._id, favNews)
+                UserService.addFavouriteNews($rootScope.currentUser._id, news)
                     .success(function(response) {
                         news.isDisabled = true;
                     });
