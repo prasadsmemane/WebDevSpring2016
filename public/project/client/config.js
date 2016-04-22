@@ -59,7 +59,10 @@
             .when("/search", {
                 templateUrl: "views/search/search.view.html",
                 controller: "SearchController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loggedin: checkCurrentUser
+                }
             })
             .when("/sameTaste", {
                 templateUrl: "views/users/sameTaste.view.html",
