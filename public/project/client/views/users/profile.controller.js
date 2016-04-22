@@ -72,6 +72,7 @@
             UserService.updateUser(currentUser._id, currentUser)
                 .then(function(response) {
                     UserService.setCurrentUser(response.data);
+                    vm.currentUser = response.data;
                     vm.message = "Profile Successfully Updated";
                     $location.url('/profile');
                 });

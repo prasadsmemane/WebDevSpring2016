@@ -124,15 +124,25 @@ module.exports = function(app, userModel) {
 
         delete user._id;
 
-        userModel.updateUser(userId, user)
+        userModel.findUserById(userId)
             .then(
                 function(doc) {
-                    res.json(doc);
-                },
-                function(err) {
-                    res.status(400).send(err);
+                    if(doc.password != user.password) {
+                        user.password = bcrypt.hashSync(user.password);
+                    }
+                    userModel.updateUser(userId, user)
+                        .then(
+                            function(doc) {
+                                res.json(doc);
+                            },
+                            function(err) {
+                                res.status(400).send(err);
+                            }
+                        );
                 }
             );
+
+
     }
 
     function deleteUserById(req, res) {
