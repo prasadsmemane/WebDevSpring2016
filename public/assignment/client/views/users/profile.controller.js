@@ -16,11 +16,11 @@
             vm.errorMessage = null;
             vm.message = null;
             if (!currentUser.username){
-                $scope.errorMessage = "Username cannot be empty";
+                vm.errorMessage = "Username cannot be empty";
                 return;
             }
             if (!currentUser.password){
-                $scope.errorMessage = "Password cannot be empty";
+                vm.errorMessage = "Password cannot be empty";
                 return;
             }
 

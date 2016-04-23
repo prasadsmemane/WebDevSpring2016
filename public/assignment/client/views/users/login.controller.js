@@ -19,7 +19,7 @@
                             $location.url("/profile");
                     }
                     else {
-                        $scope.errorMessage = "Invalid Credentials";
+                        vm.errorMessage = "Invalid Credentials";
                     }
                 });
         }
