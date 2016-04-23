@@ -4,25 +4,25 @@
         .module("FormBuilderApp")
         .controller("RegisterController", RegisterController)
 
-    function RegisterController($scope, UserService, $location, $rootScope) {
-        $scope.register = register;
+    function RegisterController($scope, UserService, $location) {
+        var vm = this;
+        vm.register = register;
 
-        function register() {
-            var user = $scope.user;
+        function register(user) {
             if(!user.username){
-                $scope.errorMessage = "Please provide a username";
+                vm.errorMessage = "Please provide a username";
                 return;
             }
             if(!user.password || !user.verifypassword){
-                $scope.errorMessage = "Please provide a password";
+                vm.errorMessage = "Please provide a password";
                 return;
             }
             if(user.password !== user.verifypassword){
-                $scope.errorMessage = "Passwords must match";
+                vm.errorMessage = "Passwords must match";
                 return;
             }
             if(!user.email){
-                $scope.errorMessage = "Please provide an email";
+                vm.errorMessage = "Please provide an email";
                 return;
             }
 

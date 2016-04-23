@@ -20,7 +20,7 @@
                 <li ng-class="{active:isActive('/profile')}" ng-show="currentUser">
                     <a href="#/profile">{{currentUser.username}}</a>
                 </li>
-                <li ng-class="{active:isActive('/admin')}" ng-show="currentUser && currentUser.role.indexOf('admin') >= 0">
+                <li ng-class="{active:isActive('/admin')}" ng-show="currentUser && currentUser.roles.indexOf('admin') >= 0">
                     <a href="#/admin">Admin</a>
                 </li>
                 <li ng-show="currentUser">

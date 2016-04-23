@@ -1,9 +1,10 @@
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var bcrypt = require("bcrypt-nodejs");
-
 module.exports = function(app, userModel) {
     var auth = authorized;
+    var passport = require('passport');
+    var LocalStrategy = require('passport-local').Strategy;
+    var bcrypt = require("bcrypt-nodejs");
+
+    passport.use('project', new LocalStrategy(pLocalStrategy));
 
     app.delete("/api/project/admin/:id", auth, deleteUserById);
     app.get("/api/project/admin/members", auth, findAllMembers);
@@ -13,15 +14,12 @@ module.exports = function(app, userModel) {
     app.get("/api/project/user?username=:username&password=:password", findUserByCredentials);
     app.put("/api/project/user/:id", updateUserById);
 
-    app.post("/api/project/login", passport.authenticate('local'), login);
+    app.post("/api/project/login", passport.authenticate('project'), login);
     app.post("/api/project/logout", logout);
     app.get("/api/project/loggedin", loggedIn);
 
-    passport.use(new LocalStrategy(localStrategy));
-    passport.serializeUser(serializeUser);
-    passport.deserializeUser(deserializeUser);
 
-    function localStrategy(username, password, done) {
+    function pLocalStrategy(username, password, done) {
         userModel
             .findUserByUsername(username)
             .then(

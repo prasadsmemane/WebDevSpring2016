@@ -14,19 +14,35 @@ module.exports = function(db, mongoose) {
         findUserByCredentials: findUserByCredentials,
         findUserByUsername: findUserByUsername,
         findAllUsers: findAllUsers,
+
+        createUserAdmin: createUserAdmin,
+        findUserById: findUserById
     };
 
     return api;
 
+    function createUserAdmin(user) {
+        var deferred = q.defer();
+
+        UserModel.create(user, function (err, doc) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(doc);
+            }
+        });
+
+        return deferred.promise;
+    }
+
     //Create a new User
     function createUser(user) {
         //user._id = uuid.v1();
-        if(user.username == 'admin') {
-            user.password = 'password';
-            user.role = 'admin';
-        }
+        if(user.username == 'admin')
+            user.roles = ['admin'];
         else
-            user.role = 'member';
+            user.roles = ['member'];
+
         var deferred = q.defer();
 
         UserModel.create(user, function (err, doc) {
@@ -124,6 +140,20 @@ module.exports = function(db, mongoose) {
         var deferred = q.defer();
 
         UserModel.findByIdAndRemove(userId, function (err, doc) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(doc);
+            }
+        });
+
+        return deferred.promise;
+    }
+
+    function findUserById(userId) {
+        var deferred = q.defer();
+
+        UserModel.findById(userId, function (err, doc) {
             if (err) {
                 deferred.reject(err);
             } else {

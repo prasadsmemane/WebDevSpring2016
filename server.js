@@ -54,7 +54,10 @@ app.get('/project', cors(), function(req, res){
     res.sendfile('/project/client/index.html');
 });
 
-require('./public/assignment/server/app.js')(app, db, mongoose);
-require('./public/project/server/app.js')(app, db, mongoose);
+var aUserModel = require("./public/assignment/server/models/user.model.server.js")(db, mongoose);
+var pUserModel = require("./public/project/server/models/user.model.server.js")(db, mongoose);
+
+require('./public/assignment/server/app.js')(app, db, mongoose, aUserModel, pUserModel, passport);
+require('./public/project/server/app.js')(app, db, mongoose, aUserModel, pUserModel, passport);
 
 app.listen(port, ipaddress);

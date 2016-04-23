@@ -8,7 +8,6 @@
         var service = {
             createUser: createUser,
             updateUser: updateUser,
-            deleteUserById: deleteUserById,
 
             findUserByCredentials: findUserByCredentials,
             loginUserByCredentials: loginUserByCredentials,
@@ -16,6 +15,10 @@
 
             setCurrentUser: setCurrentUser,
             getCurrentUser: getCurrentUser,
+
+            createUserAdmin: createUserAdmin,
+            deleteUserById: deleteUserById,
+            updateUserAdmin: updateUserAdmin,
 
             logout: logout
         };
@@ -32,18 +35,26 @@
         }
 
         //Create a new User
+        function createUserAdmin(user) {
+            return $http.post("/api/assignment/admin/user", user);
+        }
+
         function createUser(user) {
             return $http.post("/api/assignment/user", user);
         }
 
         //Update the current user
+        function updateUserAdmin(userId, user) {
+            return $http.put("/api/assignment/admin/user/" + userId, user);
+        }
+
         function updateUser(userId, user) {
             return $http.put("/api/assignment/user/" + userId, user);
         }
 
         //Delete user by id
         function deleteUserById(userId) {
-            return $http.delete("/api/assignment/user/" + userId);
+            return $http.delete("/api/assignment/admin/user/" + userId);
         }
 
         //Find user by credentials
@@ -53,7 +64,7 @@
 
         //Return all the users
         function findAllUsers() {
-            return $http.get("/api/assignment/user");
+            return $http.get("/api/assignment/admin/user");
         }
 
         //Login user by credentials

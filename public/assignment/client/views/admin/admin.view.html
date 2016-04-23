@@ -3,38 +3,62 @@
     <h2>Users</h2>
     <br>
 
-    <div ng-show="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
-    <div ng-show="message" class="alert alert-success">{{message}}</div>
+    <div ng-show="model.errorMessage" class="alert alert-danger">{{model.errorMessage}}</div>
+    <div ng-show="model.message" class="alert alert-success">{{model.message}}</div>
 
     <div class="table-responsive">
         <table class="table table-striped">
             <thead class="table-header">
             <tr>
-                <td><span class="glyphicon glyphicon-triangle-bottom"></span> Username</td>
-                <td><span class="glyphicon glyphicon-triangle-bottom"></span> Password</td>
-                <td><span class="glyphicon glyphicon-triangle-bottom"></span> Role</td>
-                <td><span class="glyphicon glyphicon-triangle-bottom"></span> Action</td>
-            </tr>
+                <th>
+                    <a ng-click="model.performSort('username', userNameBottom)">
+                        <span type="button" class="glyphicon glyphicon-triangle-bottom" ng-show="userNameBottom == 1"></span>
+                        <span type="button" class="glyphicon glyphicon-triangle-top" ng-show="userNameBottom == -1"></span>
+                    </a>Username
+                </th>
 
-            <tr>
-                <td><input ng-model="user.username" type="text" class="form-control" id="username" placeholder="Username"></td>
-                <td><input ng-model="user.password" type="password" class="form-control" id="pwd" placeholder="Password"></td>
-                <td><input ng-model="user.role" type="text" class="form-control" id="role" placeholder="Role"></td>
-                <td>
-                    <a ng-click="addUser()"><span class="glyphicon glyphicon-plus btn btn-primary"></span></a>
-                    <a ng-click="updateUser()"><span class="glyphicon glyphicon-ok btn btn-success"></span></a>
-                </td>
+                <td><a>Password</a></td>
+
+                <th>
+                    <a ng-click="model.performSort('firstName', firstNameBottom)">
+                        <span type="button" class="glyphicon glyphicon-triangle-bottom" ng-show="firstNameBottom == 1"></span>
+                        <span type="button" class="glyphicon glyphicon-triangle-top" ng-show="firstNameBottom == -1"></span>
+                    </a>First Name
+                </th>
+
+                <th>
+                    <a ng-click="model.performSort('lastName', lastNameBottom)">
+                        <span type="button" class="glyphicon glyphicon-triangle-bottom" ng-show="lastNameBottom == 1"></span>
+                        <span type="button" class="glyphicon glyphicon-triangle-top" ng-show="lastNameBottom == -1"></span>
+                    </a>Last Name
+                </th>
+
+                <td><a>Roles</a></td>
+
+                <td><a>Action</a></td>
             </tr>
             </thead>
-
-            <tbody class="table-body">
-            <tr ng-repeat="user in users" ng-class="{selected: $index==selectedIndex}">
-                <td>{{user.username}}</td>
-                <td>*****</td>
-                <td>{{user.role}}</td>
+            <tbody>
+            <tr>
+                <td><input type="text" class="form-control" ng-model="model.selectedUser.username" placeholder="Username"/></td>
+                <td><input type="password" class="form-control" ng-model="model.selectedUser.password" placeholder="Password"/></td>
+                <td><input type="text" class="form-control" ng-model="model.selectedUser.firstName" placeholder="First Name"/></td>
+                <td><input type="text" class="form-control" ng-model="model.selectedUser.lastName" placeholder="Last Name"/></td>
+                <td><input type="text" class="form-control" ng-model="model.selectedUser.roles" placeholder="Roles"/></td>
                 <td>
-                    <span ng-click="deleteUser($index)" class="glyphicon glyphicon-remove btn btn-danger"></span>
-                    <span ng-click="selectUser($index)" class="glyphicon glyphicon-pencil btn btn-warning"></span>
+                    <a ng-click="model.addUser(model.selectedUser)"><span class="glyphicon glyphicon-plus btn btn-primary"></span></a>
+                    <a ng-click="model.updateUser(model.selectedUser)"><span class="glyphicon glyphicon-ok btn btn-success"></span></a>
+                </td>
+            </tr>
+            <tr ng-repeat="user in model.users | orderBy:sortType:sortReverse">
+                <td>{{user.username}}</td>
+                <td></td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.roles.join(", ")}}</td>
+                <td>
+                    <a ng-click="model.deleteUser(user)"><span class="glyphicon glyphicon-remove btn btn-danger"></span>
+                    <a ng-click="model.selectUser(user)"><span class="glyphicon glyphicon-pencil btn btn-warning"></span>
                 </td>
             </tr>
             </tbody>
