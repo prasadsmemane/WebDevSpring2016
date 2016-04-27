@@ -1,78 +1,305 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-
-  <meta charset="UTF-8">
-  <!-- To support IE9/IE8, not required IE11/edge -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <!-- To make the page mobile friendly -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <meta name="description" content="Assignment1">
-  <meta name="author" content="Prasad Memane">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, maximum-scale=1">
+  <title>Prasad Memane</title>
   <!-- Downloaded from http://www.favicon-generator.org/ -->
-  <link rel="icon" href="images/favicon.ico">
+  <link rel="icon" href="img/favicon.ico">
 
-  <title>Index</title>
-
-  <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.css" type="text/css" media="screen"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css" type="text/css">
+  <link href="css/animate.css" rel="stylesheet" type="text/css">
+  <link href="css/style.css" rel="stylesheet" type="text/css">
 
-  <link rel="stylesheet" href="index.css">
-  <link rel="stylesheet" href="slideshow.css">
+  <!--[if lt IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="js/html5element.js"></script>
+  <![endif]-->
 
 </head>
-
 <body>
-  <ul class="cb-slideshow">
-    <li><span>Image 01</span></li>
-    <li><span>Image 02</span></li>
-    <li><span>Image 03</span></li>
-    <li><span>Image 04</span></li>
-    <li><span>Image 05</span></li>
-    <li><span>Image 06</span></li>
-  </ul>
 
-  <div class="site-wrapper">
-    <div class="site-wrapper-inner">
-      <div class="cover-container">
-        <div class="masthead clearfix">
-          <div class="inner">
+<!--Hero_Section-->
+<section id="hero_section" class="top_cont_outer">
+  <div class="hero_wrapper">
+    <div class="container">
+      <div class="hero_section">
+        <div class="row">
+          <div class="col-md-12">
 
-            <h3 class="masthead-brand">Prasad Memane</h3>
-            <ul class="nav masthead-nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="project/client/index.html">Project</a></li>
-              <li><a href="assignment/client/index.html">Assignments</a></li>
-            </ul>
-
-            <div class="mastcontent">
-              <h1>I'm the hero CS5610 deserves, but not the one it needs right now</h1>
-              <p><a class="btn btn-lg btn-info" href="https://docs.google.com/document/d/1Bc0RnOs5fo_7dtGA_ZeYSnRHJGyJUHDFyFcDfWdtN80/edit?usp=sharing">Project Proposal</a></p>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="mastfoot">
-          <div class="inner">
-            <ul class="social-icons icon-circle icon-rotate list-unstyled list-inline">
-              <li> <a href="https://www.facebook.com/Prasad.Memame"><i class="fa fa-facebook"></i></a></li>
-              <li> <a href="https://plus.google.com/u/0/+PrasadMemaneS"><i class="fa fa-google-plus"></i></a></li>
-              <li> <a href="https://www.linkedin.com/in/prasadsmemane"><i class="fa fa-linkedin"></i></a></li>
-            </ul>
+            <div class="top_left_cont intro zoomIn wow animated">
+              <h2>I AM PRASAD<br> <strong>SOFTWARE DEVELOPER</strong></h2>
+              <p>
+                I am Prasad Memane, <br/>
+                I am interested in developing scalable and reliable applications. <br/>
+                Thrives on ambitious and challenging projects. </p>
+              <div class="underline"></div>
+              <ul class="social_links">
+                <li class="twitter animated bounceIn wow delay-02s animated" style="visibility: visible; animation-name: bounceIn;"><a href="https://www.linkedin.com/in/prasadsmemane"><i class="fa fa-linkedin"></i></a></li>
+                <li class="facebook animated bounceIn wow delay-03s animated" style="visibility: visible; animation-name: bounceIn;"><a href="https://www.facebook.com/Prasad.Memame"><i class="fa fa-facebook"></i></a></li>
+                <li class="pinterest animated bounceIn wow delay-04s animated" style="visibility: visible; animation-name: bounceIn;"><a href="https://github.com/prasadsmemane/"><i class="fa fa-github"></i></a></li>
+                <li class="gplus animated bounceIn wow delay-05s animated" style="visibility: visible; animation-name: bounceIn;"><a href="https://plus.google.com/+PrasadMemaneS"><i class="fa fa-google-plus"></i></a></li>
+              </ul> </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</section>
+<!--Hero_Section-->
 
-  <!-- Bootstrap core JavaScript
-    ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<!--Header_section-->
+<header id="header_wrapper">
+  <div class="container">
+    <div class="header_box">
+      <!--  <div class="logo"><a href="#"><img src="img/logo.png" alt="logo"></a></div>-->
+      <nav class="navbar navbar-inverse" role="navigation">
+        <div class="navbar-header">
+          <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        </div>
+        <div id="main-nav" class="collapse navbar-collapse navStyle">
+          <ul class="nav navbar-nav" id="mainNav">
+            <li class="active"><a href="#hero_section" class="scroll-link">Home</a></li>
+            <li><a href="#aboutUs" class="scroll-link">About Me</a></li>
+            <li><a href="#Portfolio" class="scroll-link">Projects</a></li>
+            <li><a href="#contact" class="scroll-link">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+<!--Header_section-->
+
+<section id="aboutUs"><!--Aboutus-->
+  <div class="inner_wrapper aboutUs-container fadeInLeft animated wow">
+    <div class="container">
+      <h2>Who Am I</h2>
+      <h6>Software Developer at <a href="http://www.smartertravelmedia.com/">SmarterTravel - A TripAdvisor Company</a></h6>
+      <div class="inner_section">
+        <div class="row">
+          <div class="col-lg-12 about-us">
+            <div class="row">
+              <div class="col-md-6"> <img class="img-responsive" src="img/me.jpg" align=""> </div><!-- /.col-md-6 -->
+              <div class="col-md-6">
+                <h3>Code is mostly read, rarely written</h3>
+                <p>
+                  I am interested in developing scalable and reliable applications. Desire to learn new languages and technologies. Proficient in Java and Web services. Thrives on ambitious and challenging projects
+                </p>
+                <p>
+                  My Technical Skills are:
+                </p>
+                <ul class="about-us-list">
+                  <li class="points"><strong>Languages:</strong> Core Java, Python, C, C++, PHP, Markup, Velocity, Racket, VB 6.0</li>
+                  <li class="points"><strong>RDBMS/ Search Platforms:</strong> MySQL, SQL Server, Solr, Elasticsearch, PL/SQL, Oracle </li>
+                  <li class="points"><strong>Design Pattern/ Frameworks:</strong> Spring MVC, JSP, JDBC, Servlets </li>
+                  <li class="points"><strong>Web Services:</strong> REST, HTML, CSS, XML, XSLT, RMI </li>
+                  <li class="points"><strong>Softwares:</strong> Rundeck, Graphite, Grafana</li>
+                </ul><!-- /.about-us-list -->
+
+              </div><!-- /.col-md-6 -->
+
+            </div><!-- /.row -->
+          </div><!-- /.col-lg-12 -->
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!--Aboutus-->
+
+<!-- Portfolio -->
+<section id="Portfolio" class="content">
+
+  <!-- Container -->
+  <div class="container portfolio_title">
+
+    <!-- Title -->
+    <div class="section-title">
+      <h2>CS5610: Web Development</h2>
+      <h6>Projects and Assignments..</h6>
+
+    </div>
+    <!--/Title -->
+
+  </div>
+  <!-- Container -->
+
+  <div class="portfolio-top"></div>
+
+  <!-- Portfolio Filters -->
+  <div class="portfolio">
+
+    <div id="filters" class="sixteen columns">
+      <ul class="clearfix">
+        <li><a id="all" href="#" data-filter="*" class="active">
+          <h5>All</h5>
+        </a></li>
+        <li><a class="" href="#" data-filter=".prototype">
+          <h5>Projects</h5>
+        </a></li>
+        <li><a class="" href="#" data-filter=".design">
+          <h5>Assignments</h5>
+        </a></li>
+      </ul>
+    </div>
+    <!--/Portfolio Filters -->
+
+    <!-- Portfolio Wrapper -->
+    <div class="isotope fadeInLeft animated wow grid" style="position: relative; overflow: hidden; height: 480px;" id="portfolio_wrapper">
+      <!-- Portfolio Item -->
+      <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four prototype  appleIOS isotope-item effect-oscar">
+
+        <div class="portfolio_img">
+          <img src="img/project.jpg"  alt="Portfolio 1"> </div>
+        <figcaption>
+          <div>
+            <a href="project/client/index.html" class="fancybox">
+              <h2>SPORTS <span>BAR</span></h2>
+              <p>Project</p>
+            </a>
+          </div>
+        </figcaption>
+      </figure>
+      <!--/Portfolio Item -->
+
+      <!-- Portfolio Item-->
+      <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(337px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four prototype isotope-item effect-oscar">
+        <div class="portfolio_img"> <img src="img/proposal.jpg" alt="Portfolio 1"> </div>
+        <figcaption>
+          <div>
+            <a href="https://docs.google.com/document/d/1Bc0RnOs5fo_7dtGA_ZeYSnRHJGyJUHDFyFcDfWdtN80" class="fancybox">
+              <h2><span>PROPOSAL</span></h2>
+              <p>Project Proposal, Google Doc</p>
+            </a>
+          </div>
+        </figcaption>
+      </figure>
+      <!--/Portfolio Item -->
+
+      <!-- Portfolio Item -->
+      <figure style="position: absolute; left: 0px; top: 0px; transform: translate3d(674px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;" class="portfolio-item one-four design isotope-item effect-oscar">
+        <div class="portfolio_img"> <img src="img/assignment.jpg" alt="Portfolio 1"> </div>
+        <figcaption>
+          <div>
+            <a href="assignment/client/index.html" class="fancybox">
+              <h2>Form <span>Maker</span></h2>
+              <p>Assignment</p>
+            </a>
+          </div>
+        </figcaption>
+      </figure>
+      <!--/Portfolio Item-->
+
+    </div>
+    <!--/Portfolio Wrapper -->
+
+  </div>
+  <!--/Portfolio Filters -->
+
+  <div class="portfolio_btm"></div>
+
+
+  <div id="project_container">
+    <div class="clear"></div>
+    <div id="project_data"></div>
+  </div>
+
+
+</section>
+<!--/Portfolio -->
+
+<!--/Team-->
+<!--Footer-->
+<footer class="footer_wrapper" id="contact">
+  <div class="container">
+    <section class="page_section contact" id="contact">
+      <div class="contact_section">
+        <h2>Get In Touch</h2>
+        <h6>Have any questions or would like to connect?</h6>
+
+      </div>
+      <div class="row">
+        <div class="col-lg-4 wow fadeInLeft">
+          <div class="contact_info">
+            <div class="detail">
+              <h4>Prasad Memane</h4>
+              <p>75 Saint Alphonsus Street, Boston, MA 02120</p>
+            </div>
+            <div class="detail">
+              <h4>Call me</h4>
+              <p>+1 (206)972-4841</p>
+            </div>
+            <div class="detail">
+              <h4>Email us</h4>
+              <p>prasadsmemane@gmail.com</p>
+            </div>
+          </div>
+
+          <ul class="social_links">
+            <li class="twitter animated bounceIn wow delay-02s"><a href="https://www.linkedin.com/in/prasadsmemane"><i class="fa fa-linkedin"></i></a></li>
+            <li class="facebook animated bounceIn wow delay-03s"><a href="https://www.facebook.com/Prasad.Memame"><i class="fa fa-facebook"></i></a></li>
+            <li class="pinterest animated bounceIn wow delay-04s"><a href="https://github.com/prasadsmemane/"><i class="fa fa-github"></i></a></li>
+            <li class="gplus animated bounceIn wow delay-05s"><a href="https://plus.google.com/+PrasadMemaneS"><i class="fa fa-google-plus"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-lg-8 wow fadeInLeft delay-06s">
+
+          <form name="sentMessage" id="contactForm"  novalidate>
+            <div class="control-group">
+              <div class="controls">
+                <input type="text" class="form-control"
+                       placeholder="Full Name" id="name" required
+                       data-validation-required-message="Please enter your name" />
+                <p class="help-block"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="controls">
+                <input type="email" class="form-control" placeholder="Email"
+                       id="email" required
+                       data-validation-required-message="Please enter your email" />
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="controls">
+				 <textarea rows="10" cols="100" class="form-control"
+                           placeholder="Message" id="message" required
+                           data-validation-required-message="Please enter your message" minlength="5"
+                           data-validation-minlength-message="Min 5 characters"
+                           maxlength="999" style="resize:none"></textarea>
+              </div>
+            </div>
+            <div id="success"> </div> <!-- For success/fail messages -->
+            <button type="submit" class="btn btn-primary pull-right">Send</button><br />
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="container">
+    <div class="footer_bottom"></div>
+  </div>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery-scrolltofixed.js"></script>
+<script type="text/javascript" src="js/jquery.nav.js"></script>
+<script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.2/isotope.pkgd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqBootstrapValidation/1.3.7/jqBootstrapValidation.min.js"></script>
+<script src="js/contactMe.js"></script>
+<script type="text/javascript" src="js/custom.js"></script>
 
 </body>
 </html>
